@@ -137,6 +137,7 @@ header .fa-times {
   cursor: pointer;
   transition: 0.2s;
   border: none;
+  border-radius: .5rem;
   box-shadow: 0 0.3rem 0.1rem rgba(0, 0, 0, 0.3);
 }
 
@@ -592,6 +593,13 @@ textarea:focus {
 
   .home .content {
     padding: 1.2rem;
+    margin-top: 6rem;
+  }
+  .home .content p{
+    padding: 1rem;
+  }
+  .home .content h1{
+    padding: 0;
   }
 
   .home::before {
