@@ -30,4 +30,10 @@
     "Technology": "Html, CSS , php, mysql,ajax",
     "imgLink": "./ajax/index.html"
   }
+  ,
+  {
+    "ProjectName": "WEB",
+    "Technology": "Html, CSS ",
+    "imgLink": "./CSE/index.html"
+  }
 ]

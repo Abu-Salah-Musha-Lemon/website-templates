@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <!-- data table CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body class="bg-gray">
+  <div class="container-fluit  shadow-sm">
+    <div class="container">
+      <div class="background" style="background-color: white;">
+        <!-- Top nav -->
+        <section class="top-wrapper shadow-sm">
+          <div class="red-box rounded box_shadow">
+            <div class="row">
+              <div class="col-md-1 col-lg-1 col-sm-1 col-xs-12">
+                <div class="logo"><img
+                    src="https://yt3.googleusercontent.com/qbVi-MUWR1orUb_PJMSaTk-LXN9Sm4ygXF6OakQLZvHvlc8Z7yd-JMguRdNljFqfGXs9N4h3VwU=s176-c-k-c0x00ffffff-no-rj"
+                    alt="" srcset="">
+                </div>
+              </div>
+              <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                <div class="logo h-4 fw-bold fs-2">Bachelor of Science in CSE</div>
+                <div class="logo h-4 fs-3">Ideal Clg</div>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+                <div class="sic">
+                  <ul class="d-flex justify-content-between">
+                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                    <li><a href="#"><i class="bi bi-envelope-fill"></i></a></li>
+                    <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                    <li><a href=""><i class="bi bi-youtube text-danger"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- nav -->
+        <section class="menu-wraper ">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light mt-1 rounded shadow-sm" style="z-index:10;">
+            <div class="container-fluid">
+              <!-- <a class="navbar-brand" href="#">Menu</a> -->
+              <button class="navbar-toggler shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> <a class="navbar-brand" href="#">Menu</a>
+              </button>
+              <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarAbout" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      About
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarAbout">
+                      <li><a class="dropdown-item" href="#">Welcome Message</a></li>
+                      <li><a class="dropdown-item" href="#">At a Glans</a></li>
+                      <li><a class="dropdown-item" href="#">Vision and Mission</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarNotice" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Notice
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarNotice">
+                      <li><a class="dropdown-item" href="#">Recent Notice</a></li>
+                      <li><a class="dropdown-item" href="#">Examination Notices</a></li>
+                      <li><a class="dropdown-item" href="#">Admission Notices</a></li>
+                      <li><a class="dropdown-item" href="#">General Notices</a></li>
+                      <li><a class="dropdown-item" href="#">Career Opportunities</a></li>
+                    </ul>
+                  </li>
+
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarMedia" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Media
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarMedia">
+                      <li><a class="dropdown-item" href="#">Video Gallery</a></li>
+                      <li><a class="dropdown-item" href="#">Image Gallery</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarCourses" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Courses
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarCourses">
+                      <li><a class="dropdown-item" href="#">CSE</a></li>
+                      <li><a class="dropdown-item" href="#">BBA</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Apply Online</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Applicant Login</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">FAQ</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </section>
+        <!-- 
+      <section class="sticker-wrapper">
+        <div class="row">
+          <div class="col-md-12">
+           <div class="breaking_news"> 
+            <div class="the_ticker">
+              <div class="btn_title">
+                  <span>Latest Update</span>
+              </div>
+            </div>
+            <div class="tickercontainer"><div class="mask"><ul id="ticker01" class="newsticker" style="width: 1762.75px; left: 778.9px;">
+          <li><img src="assets/images/new-news.gif" alt="new-news"> &nbsp;<a target="_Blank" href="/notices/notice_50_pub_date_22082023.pdf">২০২৩-২০২৪ শিক্ষাবর্ষে জাতীয় বিশ্ববিদ্যালয়ে স্কিল-বেইজড পোস্ট গ্র্যাজুয়েট ডিপ্লোমা (পিজিডি) কোর্সসমূহের (২য় ব্যাচ) ভর্তির জন্য মৌখিক পরীক্ষা সম্পর্কিত জরুরী বিজ্ঞপ্তি।</a><span>August 22, 2023  </span></li> 
+            <li><img src="assets/images/new-news.gif" alt="new-news"> &nbsp;<a target="_Blank" href="https://www.nu.ac.bd/uploads/notices/admission_flyer_pgd.pdf">Skill-Based PGD Program Admission Flyer</a><span>August 03, 2023  </span></li>  
+      
+            </ul></div></div>
+          </div>
+         </div>
+        </div>
+      </section> -->
+
+        <!-- body -->
+        <section class="main-body mt-2 ">
+          <div class="row">
+            <!-- left -->
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12 ">
+              <div class="left_sidebar_widget mx-3 mb-2  rounded">
+                <!-- <div class="left_top_box box_shadow p-4 rounded ">
+                  <h1 class="title_message fs-2 rounded border-bottom p-1">Principal</h1>
+                  <div class="logo">
+                    <img
+                      src="https://yt3.googleusercontent.com/qbVi-MUWR1orUb_PJMSaTk-LXN9Sm4ygXF6OakQLZvHvlc8Z7yd-JMguRdNljFqfGXs9N4h3VwU=s176-c-k-c0x00ffffff-no-rj"
+                      alt="" srcset="">
+                  </div>
+                  <div class="office_admin">
+                    <b>
+                      <a href="#" class="text-decoration-none fs-5 text-dark">Professor Md. Lemon</a>
+                    </b>
+                    <p class="my-2">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolorem natus quibusdam voluptate ex illum aut placeat
+                      molestiae minus perferendis repellendus ad, ullam itaque
+                      eveniet iure eaque quod nobis quasi temporibus.
+                      <a href="#" class="btn btn "> Read more </a>
+                    </p>
+                  </div>
+                </div> -->
+              
+                <div class="left-top-box box_shadow rounded">
+                  <h4 class="title-message py-2" style="text-align: left !important; padding-left: 10px;background-color: #428bca;">Vice-Chancellor</h4>
+             <img  src="https://yt3.googleusercontent.com/qbVi-MUWR1orUb_PJMSaTk-LXN9Sm4ygXF6OakQLZvHvlc8Z7yd-JMguRdNljFqfGXs9N4h3VwU=s176-c-k-c0x00ffffff-no-rj"
+              width="87" style="float:left; padding: 0px 14px 0px 0px;" alt="Professor Dr. Abu Salah Musha Lemon" title="Professor Dr. Abu Salah Musha Lemon">
+                   <div class="office-admin"> <b><a href="message-from-the-Vice-Chancellor.php" target="_Blank">Professor Dr. Abu Salah Musha Lemon </a></b></div>
+                  <p><strong>Email: </strong>email    </p>
+                  <p class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro eius cupiditate non cum fuga, excepturi nesciunt cumque! Optio porro totam at molestiae eius ullam voluptas quia architecto velit laudantium distinctio explicabo, repellat repellendus labore praesentium minus officiis enim rem saepe? Provident, maiores. Tenetur expedita quia odit, fuga cumque aliquam. Quaerat tenetur quam ullam quod nulla sunt facere fugit, voluptatum sequi ad animi dolorem, similique aliquid! Nostrum in quidem accusamus minus eum maxime aspernatur veniam quos perspiciatis sit molestias ipsum est omnis soluta sequi, perferendis impedit illo amet qui voluptates cumque, totam deserunt consequatur? Eaque dolore eos quam? Cum minus blanditiis consequuntur autem eveniet. Voluptate ab, explicabo doloribus quos obcaecati harum nisi porro id ducimus nostrum, qui earum ad unde quas quidem eum vero ex laudantium! Eveniet, adipisci aliquam? Culpa excepturi architecto temporibus nulla at, cumque, ipsum beatae quas consectetur quos blanditiis, iste aliquam nemo. Veniam quas velit omnis. Iste eligendi unde perspiciatis deserunt laborum sed blanditiis repellat dicta voluptatum, natus aspernatur animi ducimus inventore at vel, cupiditate ratione reprehenderit ut? At eveniet ratione aut distinctio incidunt velit sapiente perferendis, omnis accusamus. Provident numquam, asperiores est, voluptatibus vero tenetur minima minus tempore dolore nulla nostrum, inventore at atque doloribus. Voluptatum, non.. ... &nbsp; <a href="#">Read More &gt;&gt;</a></p>
+                </div>
+              
+              </div>
+              <div class="clearfix"></div>
+              <div class="quick-link-box mx-3">
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    Notices
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">Recent Notice</a>
+                  <a href="#" class="list-group-item list-group-item-action">Examination Notice</a>
+                  <a href="#" class="list-group-item list-group-item-action">Admission Notices</a>
+                  <a href="#" class="list-group-item list-group-item-action">New / Press Release</a>
+                  <a href="#" class="list-group-item list-group-item-action">General Notice</a>
+                  <a href="#" class="list-group-item list-group-item-action">Career Opportunities</a>
+                </div>
+              </div>
+
+            </div>
+            <!-- mid  -->
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 mt-1">
+              <!-- slider  -->
+              <div class="swiper mySwiper rounded">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="https://images.pexels.com/photos/18057622/pexels-photo-18057622/free-photo-of-raspberry-cheesecake.jpeg"
+                      alt="" srcset="" class="w-100 d-block" style="height: 600px; object-fit: cover" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="https://images.pexels.com/photos/18057622/pexels-photo-18057622/free-photo-of-raspberry-cheesecake.jpeg"
+                      alt="" srcset="" class="w-100 d-block" style="height: 600px; object-fit: cover" />
+                  </div>
+                </div>
+              </div>
+              <!-- about -->
+              <section class="main_container box_shadow mt-2 px-2 rounded">
+                <div class="row">
+                  <div class="welcome_message">
+                    <h1 class="title_header">ASM Lts.</h1>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Obcaecati unde modi maiores soluta ea enim? Dolor rerum
+                      doloremque hic est, maxime officiis voluptate.
+                      Voluptatibus illo saepe incidunt modi nostrum! Dolorum.
+                      <a href="#" class="btn btn "> Read more ..</a>
+                    </p>
+                  </div>
+                </div>
+              </section>
+              <!-- notice -->
+              <section class="notice_section mt-2 box_shadow rounded p-2">
+                <div class="row">
+                  <div class="home_content_top">
+                    <div class="tabbable_panel margin_tops4">
+                      <div class="tabbable_line">
+                        <ul class="nav nav-tabs tabtop tabsetting">
+                          <li>
+                            <a href="#tab_defautl_1" data-toggle="tab"
+                              class="mid_notice text-decoration-none fw-2 fs-5 px-2 my-2 mx-2">Admission</a>
+                          </li>
+                          <li>
+                            <a href="#tab_defautl_2" data-toggle="tab"
+                              class="mid_notice text-decoration-none fw-2 fs-5 px-2 my-2 mx-2">Examination</a>
+                          </li>
+                          <li>
+                            <a href="#tab_defautl_3" data-toggle="tab"
+                              class="mid_notice text-decoration-none fw-2 fs-5 px-2 my-2 mx-2">office Order</a>
+                          </li>
+                          <li>
+                            <a href="#tab_defautl_4" data-toggle="tab"
+                              class="mid_notice text-decoration-none fw-2 fs-5 px-2 my-2">Press Release</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- <div class="tab-content margin-tops">
+                      <div class="tab-pane fade in active show" id="tab_default_1">
+                        <div class="latest-notice-part">
+                          <table class="table table-responsive table-hover">
+                            <tbody>
+                              <tr>
+                                <th>Title</th>
+                                <th>Dated</th>
+                              </tr> -->
+                      <!--  Admission Start Notice -->
+
+                      <!-- <tr>
+                                <td><a target="_Blank" href="#">#</a></td>
+                                <td><span>Date</span></td>
+                              </tr>
+                              <tr>
+                                <td><a target="_Blank" href="#">#</a></td>
+                                <td><span>date</span></td>
+                              </tr>
+                              <tr>
+                                <td><a target="_Blank" href="#">#</a></td>
+                                <td><span>date</span></td>
+                              </tr>
+
+
+                            </tbody>
+                          </table>
+
+                          <a class="pull-right" href="#"><b class="btns">View More <i
+                                class="fa fa-angle-right"></i></b></a>
+                        </div>
+                      </div> -->
+
+                      <!--  Examination Start Notice -->
+                      <!-- 
+                      <div class="tab-pane fade" id="tab_default_2">
+                        <div class="latest-notice-part">
+                          <table class="table table-responsive table-hover">
+                            <tbody>
+                              <tr>
+                                <th>Title</th>
+                                <th>Dated</th>
+                              </tr>
+
+                              <tr>
+                                <td><a target="_Blank" href="#">#</a></td>
+                                <td><span>date</span></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+
+                          <a class="pull-right" href="#"><b class="btns">View More <i
+                                class="fa fa-angle-right"></i></b></a>
+                        </div>
+                      </div> -->
+
+                      <!--  Office order / General Start Notice -->
+
+                      <!-- <div class="tab-pane fade" id="tab_default_3">
+                        <div class="latest-notice-part">
+                          <table class="table table-responsive table-hover">
+                            <tbody>
+                              <tr>
+                                <th>Title</th>
+                                <th>Dated</th>
+                              </tr>
+
+                              <tr>
+                                <td><a target="_Blank" href="#">#</a></td>
+                                <td><span>date</span></td>
+                              </tr>
+
+                            </tbody>
+                          </table> -->
+                      <!-- 
+                          <a class="pull-right" href="#"><b class="btns">View More <i
+                                class="fa fa-angle-right"></i></b></a>
+                        </div>
+                      </div> -->
+
+                      <!--  Press Release Start Notice -->
+
+                      <!-- <div class="tab-pane fade" id="tab_default_4">
+                        <div class="latest-notice-part">
+                          <table class="table table-responsive table-hover">
+                            <tbody>
+                              <tr>
+                                <th>Title</th>
+                                <th>Dated</th>
+                              </tr>
+
+                              <tr>
+                                <td><a target="_Blank" href="#">#</a></td>
+                                <td><span>date</span></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+
+                          <a class="pull-right" href="#"><b class="btns">View More <i
+                                class="fa fa-angle-right"></i></b></a>
+                        </div>
+                      </div>
+                    </div> -->
+                      <div class="container-fluid">
+                        <div class="container mt-4">
+                          <table id="collegeList" class="table table-striped" style="width: 100%;">
+                            <thead>
+                              <tr>
+                                <th>N/0</th>
+                                <th>Name</th>
+                                <th>About</th>
+                                <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                              </tr>
+                              <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                              </tr>
+                              <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                              </tr>
+                              <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                              </tr>
+                              <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                              </tr>
+                              <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                              </tr>
+                              <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                              </tr>
+                              <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                              </tr>
+                              <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                              </tr>
+                              <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                              </tr>
+                              <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                              </tr>
+                              <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                              </tr>
+                              <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                              </tr>
+                              <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                              </tr>
+                              <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                              </tr>
+                              <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                              </tr>
+                              <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                              </tr>
+                              <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <!-- right  -->
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
+              <div class="left_sidebar_widget box_shadow rounded mx-3">
+                <div class="left_top_box align-item-center ">
+                  <iframe width="100%" height="220"
+                    src="https://www.youtube.com/embed/hkWMXL1P7rU?si=OAWYircLfJN8JNel&amp;start=5"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="clearfix m-2"></div>
+              <div class="quick-link-box mx-3">
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    Notices
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">Recent Notice</a>
+                  <a href="#" class="list-group-item list-group-item-action">Examination Notice</a>
+                  <a href="#" class="list-group-item list-group-item-action">Admission Notices</a>
+                  <a href="#" class="list-group-item list-group-item-action">New / Press Release</a>
+                  <a href="#" class="list-group-item list-group-item-action">General Notice</a>
+                  <a href="#" class="list-group-item list-group-item-action">Career Opportunities</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        <!-- footer  -->
+        <!-- <div class="footer bg-info rounded box_shadow">
+        <footer>
+          <section class="top_footer">
+            <div class="row my-4 py-4">
+              <div class="col-sm-3 col-md-3 col-ls-3 col-xs-3">
+                <div class="about ms-4">
+                  <h2>About Us</h2>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.06396879276!2d90.25487673546274!3d23.780753030778786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2z4Kai4Ka-4KaV4Ka-!5e0!3m2!1sbn!2sbd!4v1697039261482!5m2!1sbn!2sbd"
+                    width="100%" height="40%" style="border: 1px solid black" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-ls-3 col-xs-3 ">
+                <div class="helpful_link ms-2">
+                  <h2>Helpful Links</h2>
+                  <a href="#" class="list-group-item bg-blue">ASML</a>
+                  <a href="#" class="list-group-item bg-blue ">online lecture</a>
+                  <a href="#" class="list-group-item bg-blue ">catelogue</a>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-ls-3 col-xs-3 ">
+                <div class="helpful_link ms-2">
+                  <h2>Helpful Links</h2>
+                  <a href="#" class="list-group-item bg-blue">ASML</a>
+                  <a href="#" class="list-group-item bg-blue ">online lecture</a>
+                  <a href="#" class="list-group-item bg-blue ">catelogue</a>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-ls-3 col-xs-3 ">
+                <div class="helpful_link me-2">
+                  <h2>Helpful Links</h2>
+                  <a href="#" class="list-group-item bg-blue">ASML</a>
+                  <a href="#" class="list-group-item bg-blue ">online lecture</a>
+                  <a href="#" class="list-group-item bg-blue ">catelogue</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </footer>
+        <hr>
+        <div class="footer-bottom">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
+              <div class="footer-bottom-left my-2 mx-2">
+                <p class="m-0  text-left">Copyright © 2023.ASML lts. </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
+              <div class="footer-bottom my-2 mx-2" style="float: right; height: 40px;">
+                <p class="m-0 text-right">ASML Lts.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div> -->
+
+
+        <footer class="footer-wrapper box_shadow mt-4">
+          <div class="footer-widget p-4">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 ">
+                <div class="footer-box-first">
+                  <h2 class="footer-title-box">ABOUT US</h2>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14607.375940545491!2d90.35936215139971!3d23.75294230433657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b906a5857f37%3A0xb10a2f4c42ec9ca4!2sIslam%20Tower!5e0!3m2!1sen!2sbd!4v1689673706891!5m2!1sen!2sbd"
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 ">
+                <div class="footer-box-first">
+                  <h2 class="footer-title-box">Helpful Links</h2>
+                  <div class="footer-helpful-links">
+
+                    <ul>
+                      <li class="leaf">
+                        <a href="#" title="">National University</a>
+                      </li>
+                      <li class="leaf">
+                        <a target="_Blank" href="#" title="">Online Lectures</a>
+                      </li>
+                      <li><a href="#">Catelogue</a></li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 ">
+                <div class="footer-box-first">
+                  <h2 class="footer-title-box">Online E-Resouces</h2>
+                  <div class="footer-academic-links">
+                    <ul>
+
+                      <li><a target="_Blank" href="#">Monthly Magazine</a></li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 ">
+                <div class="footer-box-first">
+                  <h2 class="footer-title-box">Contact Us</h2>
+                  <div class="inner-box">
+                    <div class="media">
+                      <div class="inner-item">
+                        <div class="media-left">
+                          <span class="icon"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                        <div class="media-body">
+                          <p>Address<br>
+                            <span class="inner-text">Dhaka, Bangladesh.</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="media">
+                      <div class="inner-item">
+                        <div class="media-left">
+                          <span class="icon"><i class="fa fa-envelope-o"></i></span>
+                        </div>
+                        <div class="media-body">
+                          <span class="inner-text"><strong>Email </strong>- <a style="color:#428bca"
+                              href="mailto:#">contact.</a></span>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="media">
+                      <div class="inner-item">
+                        <div class="media-left">
+                          <span class="icon"><i class="fa fa-phone"></i></span>
+                        </div>
+                        <div class="media-body">
+                          <span class="inner-text">
+                            <b>Mobile: </b> 00000<br>
+                            <b>Mobile : </b> 00000 <br>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container -->
+
+          <div class="footer-bottom bg-info p-4">
+            <div class="row">
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
+                <div class="footer-bottom-left">
+                  <p class="m-0  text-left text-white">Copyright © 2024. </p>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
+                <div class="footer-bottom-left">
+                  <p class="m-0 text-right text-white">ASM Lemon </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script>
+          var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            //   spaceBetween: 30,
+            // effect: "fade",
+            // loop: true,
+            // autoplay: {
+            // 	delay: 3500,
+            // 	disableOnInteraction: false
+            // }
+          });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+          </script>
+
+        <!-- data table js -->
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+          new DataTable('#collegeList');
+        </script>
+
+</body>
+
+</html>
