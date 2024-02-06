@@ -24,4 +24,10 @@
     "Technology": "Html, CSS",
     "imgLink": "./slider/index.html"
   }
+  ,
+  {
+    "ProjectName": "ajax",
+    "Technology": "Html, CSS , php, mysql,ajax",
+    "imgLink": "./ajax/index.html"
+  }
 ]
