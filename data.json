@@ -1,0 +1,27 @@
+[
+  {
+    "ProjectName": "Education",
+    "Technology": "Html, CSS",
+    "imgLink": "./educational/index.html"
+  },
+  {
+    "ProjectName": "card",
+    "Technology": "Html, CSS",
+    "imgLink": "./card/index.html"
+  },
+  {
+    "ProjectName": "Drag and Drop",
+    "Technology": "Html, CSS",
+    "imgLink": "./dragAndDrop/index.html"
+  },
+  {
+    "ProjectName": "POS",
+    "Technology": "Html, CSS",
+    "imgLink": "./pos/index.html"
+  },
+  {
+    "ProjectName": "slider",
+    "Technology": "Html, CSS",
+    "imgLink": "./slider/index.html"
+  }
+]

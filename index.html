@@ -27,16 +27,36 @@
 
         <div class="row m-0">
           <div class=" col align-item-center">
-            <a href="./educational/index.html" class="btn btn-light fs-3 fw-ligther text-uppercase d-flex my-2 justify-content-center align-item-center py-2">educational 
-              <i class="fs-2  bi bi-arrow-right-square"></i></a>
-
-            <a href="./slider/index.html" class="btn btn-light fs-3 fw-ligther text-uppercase d-flex my-2 justify-content-center align-item-center py-2">slider01
-              <i class="fs-2  bi bi-arrow-right-square"></i></a>
-
+            <div class="items"></div>
+            
         </div>
 <img src="https://github.com/Abu-Salah-Musha-Lemon/Personal-Portfolio/blob/main/image/lemon.png" alt="" srcset="">
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script>
+  // items
+let items = new XMLHttpRequest();
+items.open("get", "./data.json", true);
+
+items.send();
+
+items.onload = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    let products = JSON.parse(this.responseText);
+
+    let output = "";
+    for (const i of products) {
+      output += `
+      <a href="${i.imgLink}" class="btn btn-light fs-3 fw-ligther text-uppercase d-flex my-2 justify-content-center align-item-center py-2">${i.ProjectName}
+      <i class="fs-2  bi bi-arrow-right-square"></i></a>
+           `;
+    }
+    document.querySelector(".items").innerHTML = output;
+  }
+};
+</script>
+
 </body>
 </html>

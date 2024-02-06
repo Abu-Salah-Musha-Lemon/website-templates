@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.navbar{
+  padding: 1% 7%;
+  text-align: center;
+}
+.navbar a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.container{
+  display: inline;
+  position: relative;
+}
+.content a{
+  display: block;
+}
+.content{
+  position: absolute;
+  top: 30px; right: 0;
+  background-color: orange;
+  text-align: left;
+  min-width: 100px;
+  display: none;
+}
+.container:hover .content{
+  display: block;
+}
+.content a:hover{
+  background-color: gray;
+}
+</style>
+<body>
+  <div class="navbar">
+    <a href="">Home</a>
+    <a href="">Notes</a>
+    <div class="container">
+      <a href="">Department </a>
+      <div class="content">
+        <a href="#">CSE</a>
+        <a href="#">BBA</a>
+      </div>
+    </div>
+    <a href="#">Contact</a>
+  </div>
+</body>
+</html>
