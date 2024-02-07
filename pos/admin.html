@@ -30,7 +30,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
-          <a class="navbar-brand fs-4 fw-bold" href="#">ASMLab</a>
+          <a class="navbar-brand fs-4 fw-bold" href="./index.html">ASMLab</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
           <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav  mb-2 mb-lg-0" style="margin-left:auto!important;">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Product</a>
@@ -53,7 +53,7 @@
                   Hi, lemon
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">log out</a></li>
+                  <li><a class="dropdown-item" href="./login.html">log out</a></li>
                 </ul>
               </li>
             </ul>
@@ -149,7 +149,7 @@
             <div class="mb-3">
               <label class="form-label">Name </label>
               <p class="form-control shadow-sm" id="name" name="name">Name</p>
-             
+
             </div>
             <div class="mb-3">
               <label class="form-label">Email address</label>
@@ -166,26 +166,40 @@
     </div>
   </div>
   <!-- view -->
-  <div class="container-fluid mt-4">
-    <div class="containter ">
-      <div class="row">
-        <div class="col-2">
-          <ul class="list-group">
-            <li class="list-group-item active cursor" aria-current="true">Dashboard</li>
-            <li class="list-group-item cursor">Admin</li>
-            <li class="list-group-item cursor">Products</li>
-            <li class="list-group-item cursor">User</li>
-            <li class="list-group-item cursor">Setting</li>
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-lg-2">
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid flex-lg-column align-items-stretch">
+        <h4 class="mt-2 ">ADMIN PANEL</h4>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adminDropDown"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon  "></span>
+        </button>
+        <div class="navbar-collapse flex-column align-items-stretch mt-2 collapse" id="adminDropDown">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item border-bottom"><a class="nav-link text-black fw-bold" href="#">Dashboard</a></li>
+            <li class="nav-item border-bottom"><a class="nav-link text-black fw-bold" href="#">Admin</a></li>
+            <li class="nav-item border-bottom"><a class="nav-link text-black fw-bold" href="#">User</a></li>
+            <li class="nav-item border-bottom"><a class="nav-link text-black fw-bold" href="#">Add Products</a></li>
+            <li class="nav-item border-bottom"><a class="nav-link text-black fw-bold" href="#">Setting </a></li>
+            <!-- <li class="nav-item"><a class="nav-link text-black fw-bold" href="#"></a></li> -->
           </ul>
         </div>
 
-
-        <div class="col-8">
-          <div class="container">
-            <h4>Admin</h4>
-            <button type="button" class="btn btn-outline-info shadow-sm" data-bs-toggle="modal"
-              data-bs-target="#admin"><i class="bi bi-person-plus fs-4  "></i></button>
-            <div class="card p-4 mt-3">
+      </div>
+    </nav>
+  </div>
+  <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+    <div class="container-fluid">
+      <div class="row">
+        <h3>Admin</h4>
+          <div class="but my-2">
+            <button type="button" class="btn btn-outline-info shadow-sm" data-bs-toggle="modal" data-bs-target="#admin"><i
+              class="bi bi-person-plus fs-4  "></i></button>
+          </div>
+          <div class="card">
+            <div class="card-body">
               <table id="example" class="table table-striped" style="width:100%">
                 <thead>
                   <tr>
@@ -199,12 +213,10 @@
                     <td>Tiger Nixon</td>
                     <td>System Architect</td>
                     <td>
-                      <button type="button" class="btn btn-outline-info shadow-sm"><i
-                          class="bi bi-pencil-square"  data-bs-toggle="modal"
-                          data-bs-target="#adminEdit" ></i></button>
-                      <button type="button" class="btn btn-outline-success shadow-sm"data-bs-toggle="modal"
-                      data-bs-target="#adminView" ><i
-                          class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="btn btn-outline-info shadow-sm"><i class="bi bi-pencil-square"
+                          data-bs-toggle="modal" data-bs-target="#adminEdit"></i></button>
+                      <button type="button" class="btn btn-outline-success shadow-sm" data-bs-toggle="modal"
+                        data-bs-target="#adminView"><i class="bi bi-eye-fill"></i></button>
                       <button type="button" class="btn btn-outline-danger shadow-sm"><i
                           class="bi bi-trash3"></i></button>
                     </td>
@@ -213,9 +225,13 @@
               </table>
             </div>
           </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>  
+  </div>
+
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
