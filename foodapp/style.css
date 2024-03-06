@@ -1,0 +1,83 @@
+*{
+  margin: 0;padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body{height: 100px;}
+header{
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: .5s;
+}
+header .logo{
+  color: white;
+  font-size:2em;
+  font-weight: 700;
+  text-decoration: none;
+
+}
+header .logo span{
+  color: #ff0157;
+  font-size: 2em;
+}
+
+header .navigation{
+  position: relative;
+  display: flex;
+}
+header .navigation li{
+  list-style: none;
+  display: flex;
+}
+header .navigation li a{
+text-decoration: none;
+color: white;
+font-weight: 300;
+}
+
+
+
+
+.banner{
+   position: relative;
+   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   background: url(https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: contain;
+  
+}
+.banner .content{
+  max-width: 900px;
+  text-align: center;
+}
+.banner .content h2{
+  font-size: 5em;
+  color: white;
+}
+.banner .content p{
+  font-style: 1em;
+  color: white;
+}
+.btn{
+  font-style: 1em;
+  color: white;
+  background: #ff0157;
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+}
+
+

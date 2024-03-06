@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Food app </title>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">Food <span>.</span></a>
+    <ul class="navigation">
+      <li><a href="#head">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#Expert">Expert</a></li>
+      <li><a href="#testmonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </header>
+  <div class="content"></div>
+  <section class="banner" id="Banner">
+    <div class="content">
+      <h2>Always Choose Good</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit reiciendis vitae, veritatis quas culpa consequuntur ipsum, voluptatibus, ullam voluptate et voluptates animi aliquam perferendis sequi quod molestias dolore laboriosam praesentium. Doloribus asperiores laboriosam facilis quisquam, dolores repudiandae itaque nesciunt a cupiditate perferendis, et earum corporis totam? Placeat qui cum quidem libero sit natus illo iusto, perspiciatis minima consequuntur hic atque !</p>
+      <a href="#" class="btn">our menu</a>
+    </div>
+  </section>
+
+<script>
+  window.addEventListener('scroll',function () {
+    const header = document.querySelector('header')
+    header.classList.toggle('sticky',window.scrollY>0)
+  })
+</script>
+</body>
+</html>

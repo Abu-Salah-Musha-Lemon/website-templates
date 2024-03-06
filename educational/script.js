@@ -22,7 +22,7 @@ $(document).ready(function () {
       var id = $(this).attr("id");
       var height = $(this).height();
       var offset = $(this).offset().top - 200;
-      if (top >= offset && top <offset + height) {
+      if (top >= offset && top < offset + height) {
         $("navbar ul li a").removeClass("active");
         $("navbar")
           .find('[href="#' + id + '"]')
@@ -30,19 +30,19 @@ $(document).ready(function () {
       }
     });
 
-      // $("section").each(function () {
-      //   var top = $(window).scrollTop();
-      //   var id = $(this).attr("id"); // Change to $(this).attr("id")
-      //   var height = $(this).height();
-      //   var offset = $(this).offset().top; // Remove - 200
-    
-      //   if (top >= offset && top < height + offset) {
-      //     $("navbar ul li a").removeClass("active");
-      //     $("navbar")
-      //       .find('[href="#' + id + '"]')
-      //       .addClass("active");
-      //   }
-      // });
+    $("section").each(function () {
+      var top = $(window).scrollTop();
+      var id = $(this).attr("id"); // Change to $(this).attr("id")
+      var height = $(this).height();
+      var offset = $(this).offset().top; // Remove - 200
+
+      if (top >= offset && top < height + offset) {
+        $("navbar ul li a").removeClass("active");
+        $("navbar")
+          .find('[href="#' + id + '"]')
+          .addClass("active");
+      }
+    });
 
     // 29min
   });
