@@ -44,6 +44,6 @@
   {
     "ProjectName": "Shopping Card  demo",
     "Technology": "Html,bootstrap-5,js,",
-    "imgLink": "./shoppingCard/index.html"
+    "imgLink": "./ShoppingCard/index.html"
   }
 ]
