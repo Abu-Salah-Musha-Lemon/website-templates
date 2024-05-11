@@ -11,6 +11,9 @@
   integrity="sha512-bsNktdxsLu4ooy7axuzyyFz87SWrDBaCmZsk2Dvin1/2noq49vt1jfNWUAfdybRpFCzRjdWygAOEopdbo8cGpA=="
    crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <body>
 
@@ -30,8 +33,8 @@
             <option value="Select Item" class="form-control">Select item</option>
           </select>
   
-          <button onclick="addProduct()" class="btn btn-outline-success waves-effect waves-red shadow-none  fs-5 ">
-            <i class="bi bi-bag-plus"></i>
+          <button onclick="addProduct()" class="btn-outline-purple waves-effect waves-greem fs-5 ">
+            <i class="bi bi-cart-plus"></i>
           </button>
           <div class="table-responsive">
             <table class="table align-middle">
@@ -139,7 +142,7 @@
     newRow.innerHTML = `
             <td>
               <a href="#" onclick="removeProduct(this)">
-                <i class="bi bi-x-circle fs-2 text-danger waves-effect  waves-light  "></i>
+                <i class="bi bi-x-circle fs-2 text-danger btn-outline-red waves-effect waves-red"></i>
                 </a>
             </td>
             <td><img src="img/products/${selectedProduct}.jpg" alt=""></td>
@@ -203,5 +206,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js" 
   integrity="sha512-MzXgHd+o6pUd/tm8ZgPkxya3QUCiHVMQolnY3IZqhsrOWQaBfax600esAw3XbBucYB15hZLOF0sKMHsTPdjLFg==" 
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
 </body>
 </html>
