@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Card</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.css" 
+  integrity="sha512-bsNktdxsLu4ooy7axuzyyFz87SWrDBaCmZsk2Dvin1/2noq49vt1jfNWUAfdybRpFCzRjdWygAOEopdbo8cGpA=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <!-- <div class="container"> -->
+   <div class="row" style="    top: 50px;
+   left: 0;">
+
+    <div class="col col-md-6 col-lg-6">
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Add Product</h4>
+          <select id="products" class="form-control my-2 shadow-none">
+            <!-- Products will be dynamically populated here -->
+            <option value="Select Item" class="form-control">Select item</option>
+          </select>
+  
+          <button onclick="addProduct()" class="btn btn-outline-success waves-effect waves-red shadow-none  fs-5 ">
+            <i class="bi bi-bag-plus"></i>
+          </button>
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">Remove</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Single Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody id="cartBody">
+                <!-- <tr>
+                  <td><i class="bi bi-x-circle"></i></td>
+                  <td><img src="#" alt=""></td>
+                  <td>XTS</td>
+                  <td>$500.00</td>
+                  <td><input type="number" name="number" id=""></td>
+                  <td>Subtotal</td>
+                  
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col col-md-6 col-lg-6 m-0">
+      <div class="card m-0">
+        
+        <div class="card-body">
+            <div class="row m-0">
+                <div class="col-md-2">
+                    <label for="productName" class="form-label">Name</label>
+                    
+                    
+                </div>
+                <div class="col-md-2">
+                    <label for="productDescription" class="form-label">Description</label>
+                    
+                </div>
+                <div class="col-md-2">
+                    <label for="productQty" class="form-label">Qty</label>
+                    
+                   
+                </div>
+                <div class="col-md-2">
+                    <label for="productSubtotal" class="form-label">Subtotal</label>
+                    <p id="cartSubtotal"></p>
+                </div>
+                <div class="col-md-2">
+                    <label for="productDiscount" class="form-label">Discount</label>
+                    <input type="number" onchange="calculateTotal()" class="form-control"  id="discountInput"min="0"
+                    value="0">
+                </div>
+                <div class="col-md-2">
+                    <label for="productTotal" class="form-label">Total</label>
+                    <p id="total"></p>
+
+                </div>
+            </div>
+       
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+
+<script>
+  fetch("products.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const dropdown = document.getElementById("products");
+      data.forEach((product) => {
+        const option = document.createElement("option");
+        option.value = product.id;
+        option.textContent = `${product.name} - $${product.price.toFixed(
+          2
+        )}`;
+        dropdown.appendChild(option);
+      });
+    })
+    .catch((error) => console.error("Error fetching products:", error));
+
+  function addProduct() {
+    var selectedProduct = document.getElementById("products").value;
+    var productName = document
+      .querySelector("#products option:checked")
+      .text.split(" - ")[0];
+    var productPrice = parseFloat(
+      document
+        .querySelector("#products option:checked")
+        .text.split(" - ")[1]
+        .replace("$", "")
+    );
+    var cartBody = document.getElementById("cartBody");
+
+    // Create new row for the selected product
+    var newRow = document.createElement("tr");
+    newRow.innerHTML = `
+            <td>
+              <a href="#" onclick="removeProduct(this)">
+                <i class="bi bi-x-circle fs-2 text-danger waves-effect  waves-light  "></i>
+                </a>
+            </td>
+            <td><img src="img/products/${selectedProduct}.jpg" alt=""></td>
+            <td>${productName}</td>
+            <td>$${productPrice.toFixed(2)}</td>
+            <td><input type="number" class="form-control shadow-none" value="1" min="1" onchange="updateSubtotal(this)"></td>
+            <td class="subtotal">$${productPrice.toFixed(2)}</td>
+        `;
+
+    cartBody.appendChild(newRow);
+    calculateTotal(); // Update the total after adding the product
+  }
+
+  function removeProduct(element) {
+    var row = element.closest("tr");
+    row.parentNode.removeChild(row);
+    calculateTotal();
+  }
+
+  function updateSubtotal(input) {
+    var quantity = parseInt(input.value);
+    if (quantity < 1) {
+      input.value = 1;
+      quantity = 1;
+    }
+    var price = parseFloat(
+      input.parentNode.previousElementSibling.textContent.replace("$", "")
+    );
+    var subtotal = quantity * price;
+    input.parentNode.nextElementSibling.textContent =
+      "$" + subtotal.toFixed(2);
+    calculateTotal();
+  }
+
+  function calculateTotal() {
+    var subtotalElements = document.querySelectorAll(".subtotal");
+    var cartSubtotal = 0;
+
+    subtotalElements.forEach(function (element) {
+      cartSubtotal += parseFloat(element.textContent.replace("$", ""));
+    });
+
+    var discount = parseFloat(
+      document.getElementById("discountInput").value
+    );
+    if (discount < 0) {
+      discount = 0;
+    }
+    var total = cartSubtotal - discount;
+
+    document.getElementById("cartSubtotal").textContent =
+      "$" + cartSubtotal.toFixed(2);
+    document.getElementById("total").textContent = "$" + total.toFixed(2);
+  }
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js" 
+  integrity="sha512-MzXgHd+o6pUd/tm8ZgPkxya3QUCiHVMQolnY3IZqhsrOWQaBfax600esAw3XbBucYB15hZLOF0sKMHsTPdjLFg==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

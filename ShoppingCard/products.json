@@ -1,0 +1,101 @@
+[
+  {
+      "id": "f1",
+      "name": "Cartoon Astronaut T-Shirts",
+      "price": 118.19,
+      "image": "f1.jpg"
+  },
+  {
+      "id": "f2",
+      "name": "Another Product",
+      "price": 150.00,
+      "image": "f2.jpg"
+  },
+  {
+      "id": "f3",
+      "name": "Another Product",
+      "price": 250.00,
+      "image": "f3.jpg"
+  },
+  {
+      "id": "f4",
+      "name": "Another Product",
+      "price": 350.00,
+      "image": "f4.jpg"
+  },
+  {
+      "id": "f5",
+      "name": "Another Product",
+      "price": 150.00,
+      "image": "f6.jpg"
+  },
+  {
+      "id": "f6",
+      "name": "Another Product",
+      "price": 250.00,
+      "image": "f6.jpg"
+  },
+  {
+      "id": "f7",
+      "name": "Another Product",
+      "price": 350.00,
+      "image": "f7.jpg"
+  },
+  {
+      "id": "f8",
+      "name": "Another Product",
+      "price": 110.00,
+      "image": "f8.jpg"
+  },
+  {
+      "id": "n1",
+      "name": "Another Product",
+      "price": 120.00,
+      "image": "n1.jpg"
+  },
+  {
+      "id": "n2",
+      "name": "Another Product",
+      "price": 530.00,
+      "image": "n2.jpg"
+  },
+ 
+  {
+      "id": "n3",
+      "name": "Another Product",
+      "price": 510.00,
+      "image": "n3.jpg"
+  },
+  {
+      "id": "n4",
+      "name": "Another Product",
+      "price": 530.00,
+      "image": "n4.jpg"
+  },
+  {
+      "id": "n5",
+      "name": "Another Product",
+      "price": 510.00,
+      "image": "n5.jpg"
+  },
+  {
+      "id": "n6",
+      "name": "Another Product",
+      "price": 530.00,
+      "image": "n6.jpg"
+  },
+ 
+  {
+      "id": "n7",
+      "name": "Another Product",
+      "price": 150.00,
+      "image": "n7.jpg"
+  },
+  {
+      "id": "n8",
+      "name": "Another Product",
+      "price": 250.00,
+      "image": "n8.jpg"
+  }
+ 
+]

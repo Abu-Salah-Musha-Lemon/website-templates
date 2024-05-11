@@ -40,5 +40,10 @@
     "ProjectName": "CRUD demo",
     "Technology": "Html, CSS,bootstrap-5,jquery, modal ",
     "imgLink": "./bootstrap/index.html"
+  },
+  {
+    "ProjectName": "Shopping Card  demo",
+    "Technology": "Html,bootstrap-5,js,",
+    "imgLink": "./shoppingCard/index.html"
   }
 ]
