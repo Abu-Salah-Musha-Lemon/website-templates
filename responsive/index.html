@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>responsive Code</title>
+</head>
+<style>
+  pre{
+    border: 1px solid black;
+    
+  }
+</style>
+<body>
+  <h4> mini to max</h4>
+  <pre>
+
+    .container {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+    /* xs */
+    @media (min-width: 475px) {
+      .container {
+        max-width: 475px;
+      }
+    }
+    /*sm  */
+    @media (min-width: 640px) {
+      .container {
+        max-width: 640px;
+      }
+    }
+    /* md */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 768px;
+      }
+    }
+    /* lg */
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1024px;
+      }
+    }
+    /* xl */
+    @media (min-width: 1280px) {
+      .container {
+        max-width: 1280px;
+      }
+    }
+    /* 2xl */
+    @media (min-width: 1536px) {
+      .container {
+        max-width: 1536px;
+      }
+    }
+  
+  </pre>
+  <h4>max to mini</h4>
+  <pre>
+    .container {
+      max-width: 1536px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0.5rem;
+      padding-right: 6.5rem;
+    }
+
+    /* 2xl */
+    @media (max-width: 1536px) {
+      .container {
+        max-width: 1280px;
+      }
+    }
+
+    /* xl */
+    @media (max-width: 1280px) {
+      .container {
+        max-width: 1024px;
+      }
+    }
+
+    /* lg */
+    @media (max-width: 1024px) {
+      .container {
+        max-width: 768px;
+      }
+    }
+
+    /* md  */
+    @media (max-width: 768px) {
+      .container {
+        max-width: 640px;
+      }
+    }
+
+    /* sm  */
+    @media (max-width: 640px) {
+      .container {
+        max-width: 475px;
+      }
+    }
+
+    /* xs  */
+    @media (max-width: 475px) {
+      .container {
+        width: 100%;
+      }
+    }
+  </pre>
+</body>
+
+</html>
