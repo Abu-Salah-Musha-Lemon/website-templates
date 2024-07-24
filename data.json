@@ -45,5 +45,10 @@
     "ProjectName": "Shopping Card  demo",
     "Technology": "Html,bootstrap-5,js,",
     "imgLink": "./ShoppingCard/index.html"
+  },
+  {
+    "ProjectName": "Custom Print DataTable",
+    "Technology": "Html,bootstrap-5,js,",
+    "imgLink": "./dataTable/index.html"
   }
 ]
