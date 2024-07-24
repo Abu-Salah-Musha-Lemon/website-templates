@@ -10,6 +10,11 @@
     "imgLink": "./card/index.html"
   },
   {
+    "ProjectName": "Card-2",
+    "Technology": "Html",
+    "imgLink": "./card/index2.html"
+  },
+  {
     "ProjectName": "Drag and Drop",
     "Technology": "Html, CSS",
     "imgLink": "./dragAndDrop/index.html"
@@ -57,4 +62,11 @@
     "Technology": "Html",
     "imgLink": "./responsive/index.html"
   }
+  ,
+  {
+    "ProjectName": "Tablet view POS",
+    "Technology": "Html,CSS",
+    "imgLink": "./pos2/index.html"
+  }
+
 ]
