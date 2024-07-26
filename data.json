@@ -68,5 +68,11 @@
     "Technology": "Html,CSS",
     "imgLink": "./pos2/index.html"
   }
+  ,
+  {
+    "ProjectName": "Pdf preview",
+    "Technology": "Html, bootstrap",
+    "imgLink": "./card/pdf.html"
+  }
 
 ]
