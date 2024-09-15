@@ -74,5 +74,11 @@
     "Technology": "Html, bootstrap",
     "imgLink": "./card/pdf.htm"
   }
+  ,
+  {
+    "ProjectName": "CSE Department ",
+    "Technology": "Html, bootstrap",
+    "imgLink": "./CSEdef/index.html"
+  }
 
 ]
