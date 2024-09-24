@@ -4,36 +4,12 @@
   color: #ffffff;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #f8f9fa;
-  /* Adjust as needed */
-  border-bottom: 1px solid rgba(60, 64, 67, 0.15);
-}
-
-.navbar-nav {
-  flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.nav-item {
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-.navbar-collapse {
-  justify-content: center;
-}
-/* Custom styles for news section cards */
 .news .card {
   margin-bottom: 20px;
   border: 1px solid rgba(60, 64, 67, 0.15);
 }
 
-/* Custom styles for quick links section */
+
 .quick-links .card {
   border: none;
   border-radius: 0;
@@ -46,27 +22,25 @@
   border-color: #007bff;
 }
 
-/* Custom styles for mission and vision section */
 .mission h3 {
   border-bottom: 2px solid #007bff;
   padding-bottom: 10px;
 }
 
-/* Custom styles for sections */
 section {
   padding: 60px 0;
 }
 
-/* Background color for light sections */
 .bg-light {
   background-color: #92abc4;
 }
+
 .hover:hover {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
+              rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
 }
 
-/* Ensure footer has sufficient padding and background color */
 footer {
   background-color: #343a40;
 }
+
