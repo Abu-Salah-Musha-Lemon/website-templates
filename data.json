@@ -80,5 +80,11 @@
     "Technology": "Html, bootstrap",
     "imgLink": "./CSEdef/index.html"
   }
+  ,
+  {
+    "ProjectName": "Telco ",
+    "Technology": "Html, bootstrap",
+    "imgLink": "./telco/index.html"
+  }
 
 ]

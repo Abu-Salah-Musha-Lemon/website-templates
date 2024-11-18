@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Image Gallery with Lightbox</title>
+  <!-- Link to Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .gallery-section {
+      margin-bottom: 30px;
+    }
+    .gallery-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5">
+
+    <!-- Section 1: Nature Images -->
+    <div class="gallery-section">
+      <h2 class="gallery-title">Nature</h2>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Nature+1" alt="Nature Image 1" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Nature+1">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Nature+2" alt="Nature Image 2" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Nature+2">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Nature+3" alt="Nature Image 3" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Nature+3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Architecture Images -->
+    <div class="gallery-section">
+      <h2 class="gallery-title">Architecture</h2>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Architecture+1" alt="Architecture Image 1" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Architecture+1">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Architecture+2" alt="Architecture Image 2" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Architecture+2">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Architecture+3" alt="Architecture Image 3" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Architecture+3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Urban Life Images -->
+    <div class="gallery-section">
+      <h2 class="gallery-title">Urban Life</h2>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Urban+1" alt="Urban Life Image 1" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Urban+1">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Urban+1" alt="Urban Life Image 1" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Urban+1">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Urban+2" alt="Urban Life Image 2" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Urban+2">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="gallery-item">
+            <img src="https://via.placeholder.com/500x300?text=Urban+3" alt="Urban Life Image 3" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img-src="https://via.placeholder.com/1000x600?text=Urban+3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal for Full-Size Image -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+       
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" src="" alt="Full-Size Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link to Bootstrap JS and Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <script>
+    // JavaScript to change the image source in the modal dynamically
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+
+    modal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget; // The image clicked
+      const imgSrc = button.getAttribute('data-bs-img-src'); // Get the full-size image source
+      modalImage.src = imgSrc; // Set the image source for the modal
+    });
+  </script>
+</body>
+</html>

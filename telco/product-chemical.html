@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swimming Pool Chemicals</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .section-title {
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #003366;
+    }
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .product-description {
+      margin-bottom: 20px;
+    }
+    .product-image {
+      max-height: 250px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .product-card {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid bg-body-tertiary">
+    <div class="container-xl">
+      <header class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <!-- Logo Section -->
+          <a class="navbar-brand" href="https://telco.com.bd/">
+            <img src="https://telco.com.bd/wp-content/uploads/2020/05/l-logo-1.png" alt="Logo" style="height: 50px;">
+          </a>
+
+          <!-- Navbar Toggle for Mobile -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <!-- Home Link -->
+              <li class="nav-item">
+                <a class="nav-link active" href="https://telco.com.bd/" aria-current="page">Home</a>
+              </li>
+
+              <!-- About Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="https://telco.com.bd/about/" id="navbarDropdownAbout"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAbout">
+                  <li><a class="dropdown-item" href="https://telco.com.bd/fact-and-figures/">Fact and Figures</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/culture-and-quality/">Culture and Quality</a>
+                  </li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/message-from-the-ceo/">Message from the
+                      CEO</a></li>
+                </ul>
+              </li>
+
+              <!-- We Do Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="https://telco.com.bd/we-do/" id="navbarDropdownWeDo"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  We Do
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownWeDo">
+                  <li><a class="dropdown-item" href="/we-do/#tabs|0">Feasibility Study-Design</a></li>
+                  <li><a class="dropdown-item" href="/we-do/#tabs|1">Construction</a></li>
+                  <li><a class="dropdown-item" href="/we-do/#tabs|2">Equipment Supply-Installation</a></li>
+                  <li><a class="dropdown-item" href="/we-do/#tabs|3">Troubleshooting-Maintenance</a></li>
+                  <li><a class="dropdown-item" href="/we-do/#tabs|4">Renovation & Restoration</a></li>
+                </ul>
+              </li>
+
+              <!-- Service Area Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="https://telco.com.bd/service-area/" id="navbarDropdownService"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Service Area
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownService">
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/swimming-pool/">Swimming Pool</a>
+                  </li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/steam-bath-system/">Steam Bath
+                      System</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/sauna-bath-system/">Sauna Bath
+                      System</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/jacuzzi/">Jacuzzi</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/water-feature-fountain/">Water
+                      Feature Fountain</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/musical-fountain/">Musical
+                      Fountain</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/water-theme-park/">Water Theme
+                      Park</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/wtp-stp/">WTP-STP</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/bio-fish-aqua-culture/">Bio Fish/Aqua
+                      Culture</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/service-area/others/">Others</a></li>
+                </ul>
+              </li>
+
+              <!-- Product Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/product" id="navbarDropdownProduct" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Product
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownProduct">
+                  <li><a class="dropdown-item" href="https://telco.com.bd/product/equipment/">Equipment</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/product/accessories/">Accessories</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/product/chemical/">Chemical</a></li>
+                </ul>
+              </li>
+
+              <!-- Projects Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProjects" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Projects
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownProjects">
+                  <li><a class="dropdown-item" href="https://telco.com.bd/executed-projects/">Executed Projects</a></li>
+                  <li><a class="dropdown-item" href="https://telco.com.bd/on-going-projects/">On Going Projects</a></li>
+                </ul>
+              </li>
+
+              <!-- Gallery Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGallery" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Gallery
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownGallery">
+                  <li><a class="dropdown-item"
+                      href="https://telco.com.bd/distributorship-and-certificates/">Distributorship and Certificates</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Buyer’s Guide</a></li>
+                  <li><a class="dropdown-item" href="#">TELCo’s Creation & References</a></li>
+                </ul>
+              </li>
+
+              <!-- Contact Link -->
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+
+              <!-- Admin Link -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="https://telco.com.bd/wp-admin/" id="navbarDropdownAdmin"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                  <li><a class="dropdown-item" href="https://telco.com.bd/webmail">Webmail</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <!-- Section Title -->
+    <h1 class="section-title text-center">Swimming Pool Chemicals</h1>
+
+    <!-- Product 1 -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x200" alt="Product 1" class="product-image img-fluid">
+          <h4 class="product-title">Calcium Hypochlorite Granular Niclon 70G - Japan (45kg/Drum)</h4>
+          <p class="product-description">
+            Niclon, a brand of calcium hypochlorite, is used around the world in keeping modern life clean. It effectively disinfects and sanitizes by dissolving in water to create a chlorine solution.
+          </p>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x200" alt="Product 2" class="product-image img-fluid">
+          <h4 class="product-title">Pool Chlorine - Granular HTH 70G - USA (45kg/Drum)</h4>
+          <p class="product-description">
+            Directions for use: Test pool water and maintain pH between 7.2 – 7.6. Dose your pool with 250g of HTH 70% Granular for every 50,000 liters of water, repeat every day or as needed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x200" alt="Product 3" class="product-image img-fluid">
+          <h4 class="product-title">Calcium Hypochlorite STAR-CHLON Japan 70% Chlorine Granules</h4>
+          <p class="product-description">
+            A highly effective disinfectant for pools, spas, and water supplies. Also used in industries like food processing, textiles, and more.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x200" alt="Product 4" class="product-image img-fluid">
+          <h4 class="product-title">Calcium Hypochlorite Waterchlon China 70% Granular (40kg Drum)</h4>
+          <p class="product-description">
+            A high-quality dry chlorinator used for sanitizing pools and industrial water treatment. Available as free-flowing granules with longer shelf-life than liquid sanitizers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x200" alt="Product 5" class="product-image img-fluid">
+          <h4 class="product-title">Tablet Chlorine 90% (50kg Drum)</h4>
+          <p class="product-description">
+            Chlorine tablets are an economical and effective way to disinfect and purify water. Ideal for rural areas or where timely water purification is needed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://telco.com.bd/wp-content/uploads/2020/07/Hydrochloric-Acid-33.jpg" alt="Hydrochloric Acid" class="product-image img-fluid">
+          <h4 class="product-title">Hydrochloric Acid 33%</h4>
+          <p class="product-description">
+            Used for cleaning brick, concrete etching, and rust removal. This acid is also employed for pH adjustment in swimming pool maintenance and water treatment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section -->
+
+  <div class="container-fluid bg-dark">
+    <div class="container-xl">
+      <footer class="bg-dark text-white py-4">
+        <div class="container">
+          <div class="row">
+            <!-- About Us Column -->
+            <div class="col-md-4">
+              <h4><strong>About Us</strong></h4>
+              <p>We are a leading provider of engineering and lifestyle amenities, offering top-notch solutions for your
+                home and business needs. Our commitment to quality and service excellence sets us apart in the industry.
+              </p>
+
+
+              <h5>Our Location</h5>
+              <div class="embed-responsive embed-responsive-16by9 footer-map-container">
+                <iframe class="embed-responsive-item"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.7125111270466!2d90.41482411498286!3d23.828819984550762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7f09a2bd4df%3A0x62e21a07518c5674!2sTotal%20Engineering%20%26%20Lifestyle%20Amenities%20Co.!5e0!3m2!1sen!2sbd!4v1591682142754!5m2!1sen!2sbd"
+                  width="100%" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                  tabindex="0"></iframe>
+              </div>
+
+
+
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-md-4">
+              <h4><strong>Quick Links</strong></h4>
+              <ul class="list-unstyled">
+                <li><a href="/about" class="text-white">About Us</a></li>
+                <li><a href="/services" class="text-white">Services</a></li>
+                <li><a href="/contact" class="text-white">Contact</a></li>
+                <li><a href="/privacy-policy" class="text-white">Privacy Policy</a></li>
+              </ul>
+            </div>
+
+            <!-- Social Media Column -->
+            <div class="col-md-4">
+              <!-- Contact Info -->
+              <h5>Contact Us</h5>
+              <p><strong>Corporate Office:</strong></p>
+              <p>House 29, Road 02, Nikunja 2, Khilkhet, Dhaka 1229, Bangladesh</p>
+              <p><strong>Phone:</strong> +880-2-8900039</p>
+              <p><strong>Email:</strong> <a href="mailto:info@telco.com.bd"
+                  class="text-white footer-link">info@telco.com.bd</a></p>
+              <p><strong>Cell:</strong> +8801713062199, +8801708496416 (CEO)</p>
+              <p>OR +8801708496421 (Head of Technical Services)</p>
+              <h4><strong>Follow Us</strong></h4>
+              <ul class="list-unstyled d-flex">
+                <li class="mr-3">
+                  <a href="https://www.facebook.com/totalengineeringbd" class="text-white" target="_blank">
+                    <i class="bi bi-facebook" style="font-size: 24px;"></i>
+                  </a>
+                </li>
+                <li class="mr-3">
+                  <a href="https://twitter.com/totalengineeringbd" class="text-white" target="_blank">
+                    <i class="bi bi-twitter" style="font-size: 24px;"></i>
+                  </a>
+                </li>
+                <li class="mr-3">
+                  <a href="https://www.linkedin.com/company/totalengineeringbd" class="text-white" target="_blank">
+                    <i class="bi bi-linkedin" style="font-size: 24px;"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Footer Bottom Section -->
+          <div class="row mt-4">
+            <div class="col text-center">
+              <p>&copy; 2024 Total Engineering & Lifestyle Amenities Co. All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
