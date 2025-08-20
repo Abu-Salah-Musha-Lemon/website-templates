@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+  <title>Card Deck Hover Effect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f2f2f2 url('https://www.transparenttextures.com/patterns/white-wall-3.png');
+    background-size: 200px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 40px 60px;
+    background: #fafafa;
+    border-radius: 16px;
+    box-shadow: 6px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+  }
+
+
+  .card {
+    position: relative;
+    width: 260px;
+    height: 380px;
+    margin-right: -180px;
+    border-radius: 12px;
+    transition: transform 0.4s ease, z-index 0.3s ease;
+    cursor: pointer;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 8px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 8.4s ease;
+  }
+
+  .card:hover {
+    z-index: 10;
+    transform: translateY(-20px) rotate(-3dge);
+  }
+    .card:hover~.card {
+      transform: translateX(180px) scale(1.05);
+      z-index: 5;
+    }
+</style>
+
+<body>
+  <div class="content">
+
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5054141/pexels-photo-5054141.jpeg" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/13619960/pexels-photo-13619960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/13043814/pexels-photo-13043814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5054141/pexels-photo-5054141.jpeg" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5054141/pexels-photo-5054141.jpeg" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/13619960/pexels-photo-13619960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/13043814/pexels-photo-13043814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5054141/pexels-photo-5054141.jpeg" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5054141/pexels-photo-5054141.jpeg" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/13619960/pexels-photo-13619960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/13043814/pexels-photo-13043814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5054141/pexels-photo-5054141.jpeg" alt="">
+    </div>
+
+  </div>
+</body>
+
+</html>
