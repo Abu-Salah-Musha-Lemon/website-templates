@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Image & Video Slider</title>
+  <title>Responsive Media Slider</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
@@ -133,11 +134,40 @@
       opacity: 0.6;
     }
 
+    /* ✅ Tablet view: main item 80% height, side items stacked in 20% column */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .grid {
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 80% 20%;
+        height: 500px;
+      }
+
+      .main-slide {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+      }
+
+      .side-slide-top {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .side-slide-bottom {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+    }
+
+    /* ✅ Mobile view: all slides in one column */
     @media (max-width: 768px) {
       .grid {
-        height: 300px;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: auto auto auto;
+        height: auto;
+      }
+
+      .slide {
+        height: 240px;
       }
 
       .main-slide {
@@ -151,32 +181,13 @@
       .side-slide-bottom {
         grid-row: 3 / 4;
       }
-    }
 
-    @media (max-width: 480px) {
-      .slider-container {
-        padding: var(--spacing-base);
-      }
-
-      .grid {
-        height: 240px;
-        gap: 8px;
-      }
-
-      .project-title-wrapper {
-        height: 28px;
-      }
-
-      .project-title {
-        font-size: 1.1rem;
-      }
-
-      button {
-        padding: 7px 14px;
-        font-size: 0.85rem;
-        margin: 4px 6px;
+      .slide img,
+      .slide video {
+        position: relative;
       }
     }
+
 
     @media (prefers-reduced-motion: reduce) {
       * {
@@ -186,6 +197,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="slider-container">
@@ -234,6 +246,7 @@
     ];
 
     let currentIndex = 0;
+
     const mainSlide = document.getElementById("mainSlide");
     const topSlide = document.getElementById("topSlide");
     const bottomSlide = document.getElementById("bottomSlide");
@@ -244,7 +257,6 @@
 
     function createMediaElement({ type, src }, isMain = false) {
       let el;
-
       if (type === "video") {
         el = document.createElement("video");
         el.src = src;
@@ -260,9 +272,7 @@
 
       if (isMain) el.setAttribute("tabindex", "0");
       el.style.opacity = "0";
-
-      el.addEventListener("loadeddata", () => (el.style.opacity = "1"));
-      el.addEventListener("load", () => (el.style.opacity = "1"));
+      el.onload = () => (el.style.opacity = "1");
 
       return el;
     }
@@ -289,53 +299,42 @@
       }, 300);
     }
 
-    function animateImageChange(direction) {
+    function animateMediaChange(direction) {
       const nextIndex = direction === 'down' ? currentIndex + 1 : currentIndex - 1;
       if (nextIndex < 0 || nextIndex >= projects.length) return;
 
-      const nextProject = projects[nextIndex];
-      const mainMedia = createMediaElement(nextProject.media[0], true);
-      const topMedia = createMediaElement(nextProject.media[1]);
-      const bottomMedia = createMediaElement(nextProject.media[2]);
+      const next = projects[nextIndex];
+      const mainEl = createMediaElement(next.media[0], true);
+      const topEl = createMediaElement(next.media[1]);
+      const bottomEl = createMediaElement(next.media[2]);
 
       const offset = direction === 'down' ? 100 : -100;
-      const newItems = [mainMedia, topMedia, bottomMedia];
-      const slides = [mainSlide, topSlide, bottomSlide];
-
-      newItems.forEach(el => {
+      [mainEl, topEl, bottomEl].forEach(el => {
         el.style.transform = `translateY(${offset}%) scale(1.05)`;
         el.style.filter = "blur(6px)";
       });
 
-      mainSlide.appendChild(mainMedia);
-      topSlide.appendChild(topMedia);
-      bottomSlide.appendChild(bottomMedia);
+      mainSlide.appendChild(mainEl);
+      topSlide.appendChild(topEl);
+      bottomSlide.appendChild(bottomEl);
 
       requestAnimationFrame(() => {
-        newItems.forEach(el => {
+        [mainEl, topEl, bottomEl].forEach(el => {
           el.style.transition = "transform 0.6s ease, opacity 0.6s ease, filter 0.4s ease";
           el.style.transform = "translateY(0%) scale(1)";
           el.style.filter = "blur(0)";
           el.style.opacity = "1";
         });
 
-        slides.forEach(container => {
-          if (container.children.length > 1) {
-            container.children[0].classList.add("fade-out");
-          }
-        });
-
         setTimeout(() => {
-          slides.forEach(container => {
-            if (container.children.length > 1) {
-              container.removeChild(container.children[0]);
-            }
-          });
+          if (mainSlide.children.length > 1) mainSlide.removeChild(mainSlide.children[0]);
+          if (topSlide.children.length > 1) topSlide.removeChild(topSlide.children[0]);
+          if (bottomSlide.children.length > 1) bottomSlide.removeChild(bottomSlide.children[0]);
 
           currentIndex = nextIndex;
           updateButtons();
-          animateTitle(nextProject.title);
-          mainMedia.focus();
+          animateTitle(next.title);
+          mainEl.focus();
         }, 600);
       });
     }
@@ -349,9 +348,10 @@
       updateButtons();
     }
 
-    upBtn.addEventListener("click", () => animateImageChange('up'));
-    downBtn.addEventListener("click", () => animateImageChange('down'));
+    upBtn.addEventListener("click", () => animateMediaChange('up'));
+    downBtn.addEventListener("click", () => animateMediaChange('down'));
 
+    // Touch swipe support
     let startY = 0;
     sliderGrid.addEventListener("touchstart", (e) => {
       startY = e.touches[0].clientY;
@@ -362,15 +362,15 @@
       const diff = endY - startY;
       if (Math.abs(diff) > 50) {
         if (diff > 0) {
-          animateImageChange('up');
+          animateMediaChange('up');
         } else {
-          animateImageChange('down');
+          animateMediaChange('down');
         }
       }
     });
 
     renderInitial();
   </script>
-
 </body>
+
 </html>
