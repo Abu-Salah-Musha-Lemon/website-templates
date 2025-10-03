@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Project Image Slider</title>
+  <title>Fixed Frame Project Slider</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
-      background: #f5f5f5;
+      background: #f4f4f4;
     }
 
     .slider-container {
@@ -16,21 +16,12 @@
       margin: 0 auto;
     }
 
-    .viewport {
-      height: 420px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .slider {
+    .grid {
       display: grid;
       grid-template-columns: 4fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 10px;
       height: 400px;
-      position: absolute;
-      width: 100%;
-      transition: transform 0.5s ease-in-out;
     }
 
     .slide {
@@ -43,11 +34,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .slide:hover img {
-      transform: scale(1.05);
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
     }
 
     .main-slide {
@@ -91,10 +79,16 @@
 <body>
 
   <div class="slider-container">
-    <div class="viewport" id="viewport">
-      <!-- Two sliders stacked for animation -->
-      <div class="slider" id="currentSlide"></div>
-      <div class="slider" id="nextSlide"></div>
+    <div class="grid">
+      <div class="slide main-slide">
+        <img id="mainImg" tabindex="0" src="" alt="Main Image">
+      </div>
+      <div class="slide side-slide-top">
+        <img id="topImg" src="" alt="Side Image Top">
+      </div>
+      <div class="slide side-slide-bottom">
+        <img id="bottomImg" src="" alt="Side Image Bottom">
+      </div>
     </div>
 
     <div class="project-title" id="projectTitle">Project Title</div>
@@ -134,77 +128,54 @@
     ];
 
     let currentIndex = 0;
-    const currentSlide = document.getElementById("currentSlide");
-    const nextSlide = document.getElementById("nextSlide");
+    const mainImg = document.getElementById("mainImg");
+    const topImg = document.getElementById("topImg");
+    const bottomImg = document.getElementById("bottomImg");
     const projectTitle = document.getElementById("projectTitle");
     const upBtn = document.getElementById("upBtn");
     const downBtn = document.getElementById("downBtn");
 
-    function createSlideHTML(project) {
-      return `
-        <div class="slide main-slide">
-          <img tabindex="0" src="${project.images[0]}" alt="Main Image">
-        </div>
-        <div class="slide side-slide-top">
-          <img src="${project.images[1]}" alt="Side Image Top">
-        </div>
-        <div class="slide side-slide-bottom">
-          <img src="${project.images[2]}" alt="Side Image Bottom">
-        </div>
-      `;
-    }
+    function showProject(index) {
+      const project = projects[index];
 
-    function renderInitialSlider() {
-      const project = projects[currentIndex];
-      currentSlide.innerHTML = createSlideHTML(project);
-      projectTitle.textContent = project.title;
-      updateButtons();
-    }
-
-    function animateSlide(direction) {
-      const newIndex = direction === 'down' ? currentIndex + 1 : currentIndex - 1;
-      if (newIndex < 0 || newIndex >= projects.length) return;
-
-      const newProject = projects[newIndex];
-      nextSlide.innerHTML = createSlideHTML(newProject);
-      projectTitle.textContent = newProject.title;
-
-      nextSlide.style.transform = `translateY(${direction === 'down' ? '100%' : '-100%'})`;
-      currentSlide.style.transform = 'translateY(0%)';
-
-      requestAnimationFrame(() => {
-        currentSlide.style.transition = 'transform 0.5s ease-in-out';
-        nextSlide.style.transition = 'transform 0.5s ease-in-out';
-        currentSlide.style.transform = `translateY(${direction === 'down' ? '-100%' : '100%'})`;
-        nextSlide.style.transform = 'translateY(0%)';
-      });
+      // Fade out
+      [mainImg, topImg, bottomImg].forEach(img => img.style.opacity = 0);
 
       setTimeout(() => {
-        currentSlide.innerHTML = nextSlide.innerHTML;
-        currentSlide.style.transition = 'none';
-        nextSlide.style.transition = 'none';
-        currentSlide.style.transform = 'translateY(0)';
-        nextSlide.style.transform = 'translateY(0)';
-        currentIndex = newIndex;
-        updateButtons();
+        // Change src
+        mainImg.src = project.images[0];
+        topImg.src = project.images[1];
+        bottomImg.src = project.images[2];
+        projectTitle.textContent = project.title;
+
+        // Fade in
+        [mainImg, topImg, bottomImg].forEach(img => img.style.opacity = 1);
 
         // Focus on main image
-        const mainImg = currentSlide.querySelector('.main-slide img');
-        if (mainImg) {
-          mainImg.focus();
-        }
-      }, 500);
+        mainImg.focus();
+
+        // Update buttons
+        upBtn.disabled = index === 0;
+        downBtn.disabled = index === projects.length - 1;
+      }, 200); // timing between fade
     }
 
-    function updateButtons() {
-      upBtn.disabled = currentIndex === 0;
-      downBtn.disabled = currentIndex >= projects.length - 1;
-    }
+    upBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showProject(currentIndex);
+      }
+    });
 
-    upBtn.addEventListener("click", () => animateSlide('up'));
-    downBtn.addEventListener("click", () => animateSlide('down'));
+    downBtn.addEventListener("click", () => {
+      if (currentIndex < projects.length - 1) {
+        currentIndex++;
+        showProject(currentIndex);
+      }
+    });
 
-    renderInitialSlider();
+    // Initial render
+    showProject(currentIndex);
   </script>
 
 </body>
