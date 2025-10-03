@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vertical Image Slider</title>
+  <title>Project Image Slider</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,14 +16,8 @@
       margin: 0 auto;
     }
 
-    .title-group {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
     .viewport {
-      height: 400px;
+      height: 420px;
       overflow: hidden;
       position: relative;
     }
@@ -71,6 +65,12 @@
       grid-column: 2 / 3;
     }
 
+    .project-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
     .buttons {
       margin-top: 20px;
     }
@@ -91,13 +91,13 @@
 <body>
 
   <div class="slider-container">
-    <div class="title-group" id="groupTitle">Group Title</div>
-
     <div class="viewport" id="viewport">
       <!-- Two sliders stacked for animation -->
       <div class="slider" id="currentSlide"></div>
       <div class="slider" id="nextSlide"></div>
     </div>
+
+    <div class="project-title" id="projectTitle">Project Title</div>
 
     <div class="buttons">
       <button id="upBtn">⬆️ Up</button>
@@ -106,62 +106,72 @@
   </div>
 
   <script>
-    const data = [
-      { title: "Flower", src: "https://plus.unsplash.com/premium_photo-1759432614458-1a85120c66d7?q=80&w=870&auto=format&fit=crop" },
-      { title: "Abstract Shape", src: "https://images.unsplash.com/photo-1759392658577-4324fb89b991?q=80&w=870&auto=format&fit=crop" },
-      { title: "Room", src: "https://images.unsplash.com/photo-1759388105240-6d169c2929cb?q=80&w=870&auto=format&fit=crop" },
-      { title: "Mountain", src: "https://images.unsplash.com/photo-1754038373296-77dfb664da12?q=80&w=775&auto=format&fit=crop" },
-      { title: "Laptop", src: "https://plus.unsplash.com/premium_photo-1730828574055-cd60d4559fbc?q=80&w=870&auto=format&fit=crop" },
-      { title: "Couch", src: "https://images.unsplash.com/photo-1743341942781-14f3c65603c4?q=80&w=871&auto=format&fit=crop" },
-      { title: "Sunglasses", src: "https://plus.unsplash.com/premium_photo-1759412040925-76f319b7c8f5?q=80&w=1056&auto=format&fit=crop" },
-      { title: "Stairs", src: "https://images.unsplash.com/photo-1758817488807-caa2ce2bf811?q=80&w=1034&auto=format&fit=crop" },
-      { title: "Beach", src: "https://images.unsplash.com/photo-1759222977064-7a75dc2b83b1?q=80&w=870&auto=format&fit=crop" }
+    const projects = [
+      {
+        title: "Navana Deleventy",
+        images: [
+          "https://plus.unsplash.com/premium_photo-1759432614458-1a85120c66d7?q=80&w=870&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1759392658577-4324fb89b991?q=80&w=870&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1759388105240-6d169c2929cb?q=80&w=870&auto=format&fit=crop"
+        ]
+      },
+      {
+        title: "Creative Studio",
+        images: [
+          "https://images.unsplash.com/photo-1754038373296-77dfb664da12?q=80&w=775&auto=format&fit=crop",
+          "https://plus.unsplash.com/premium_photo-1730828574055-cd60d4559fbc?q=80&w=870&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1743341942781-14f3c65603c4?q=80&w=871&auto=format&fit=crop"
+        ]
+      },
+      {
+        title: "Urban Minimal",
+        images: [
+          "https://plus.unsplash.com/premium_photo-1759412040925-76f319b7c8f5?q=80&w=1056&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1758817488807-caa2ce2bf811?q=80&w=1034&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1759222977064-7a75dc2b83b1?q=80&w=870&auto=format&fit=crop"
+        ]
+      }
     ];
 
     let currentIndex = 0;
-    const itemsPerPage = 3;
-
     const currentSlide = document.getElementById("currentSlide");
     const nextSlide = document.getElementById("nextSlide");
-    const groupTitle = document.getElementById("groupTitle");
+    const projectTitle = document.getElementById("projectTitle");
     const upBtn = document.getElementById("upBtn");
     const downBtn = document.getElementById("downBtn");
 
-    function createSlideHTML(visibleItems) {
+    function createSlideHTML(project) {
       return `
         <div class="slide main-slide">
-          <img src="${visibleItems[0]?.src}" alt="${visibleItems[0]?.title}">
+          <img tabindex="0" src="${project.images[0]}" alt="Main Image">
         </div>
         <div class="slide side-slide-top">
-          <img src="${visibleItems[1]?.src}" alt="${visibleItems[1]?.title}">
+          <img src="${project.images[1]}" alt="Side Image Top">
         </div>
         <div class="slide side-slide-bottom">
-          <img src="${visibleItems[2]?.src}" alt="${visibleItems[2]?.title}">
+          <img src="${project.images[2]}" alt="Side Image Bottom">
         </div>
       `;
     }
 
     function renderInitialSlider() {
-      const visibleItems = data.slice(currentIndex, currentIndex + itemsPerPage);
-      currentSlide.innerHTML = createSlideHTML(visibleItems);
-      groupTitle.textContent = `Group: ${visibleItems.map(v => v.title).join(", ")}`;
+      const project = projects[currentIndex];
+      currentSlide.innerHTML = createSlideHTML(project);
+      projectTitle.textContent = project.title;
       updateButtons();
     }
 
     function animateSlide(direction) {
-      const newIndex = direction === 'down' ? currentIndex + itemsPerPage : currentIndex - itemsPerPage;
+      const newIndex = direction === 'down' ? currentIndex + 1 : currentIndex - 1;
+      if (newIndex < 0 || newIndex >= projects.length) return;
 
-      if (newIndex < 0 || newIndex >= data.length) return;
+      const newProject = projects[newIndex];
+      nextSlide.innerHTML = createSlideHTML(newProject);
+      projectTitle.textContent = newProject.title;
 
-      const visibleItems = data.slice(newIndex, newIndex + itemsPerPage);
-      nextSlide.innerHTML = createSlideHTML(visibleItems);
-      groupTitle.textContent = `Group: ${visibleItems.map(v => v.title).join(", ")}`;
-
-      // Set starting position
       nextSlide.style.transform = `translateY(${direction === 'down' ? '100%' : '-100%'})`;
       currentSlide.style.transform = 'translateY(0%)';
 
-      // Animate
       requestAnimationFrame(() => {
         currentSlide.style.transition = 'transform 0.5s ease-in-out';
         nextSlide.style.transition = 'transform 0.5s ease-in-out';
@@ -169,7 +179,6 @@
         nextSlide.style.transform = 'translateY(0%)';
       });
 
-      // Swap slides after animation
       setTimeout(() => {
         currentSlide.innerHTML = nextSlide.innerHTML;
         currentSlide.style.transition = 'none';
@@ -178,12 +187,18 @@
         nextSlide.style.transform = 'translateY(0)';
         currentIndex = newIndex;
         updateButtons();
+
+        // Focus on main image
+        const mainImg = currentSlide.querySelector('.main-slide img');
+        if (mainImg) {
+          mainImg.focus();
+        }
       }, 500);
     }
 
     function updateButtons() {
       upBtn.disabled = currentIndex === 0;
-      downBtn.disabled = currentIndex + itemsPerPage >= data.length;
+      downBtn.disabled = currentIndex >= projects.length - 1;
     }
 
     upBtn.addEventListener("click", () => animateSlide('up'));
