@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Image Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    .slider-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .title-group {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .slider {
+      display: grid;
+      grid-template-columns: 4fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      height: 400px;
+      position: relative;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .slide:hover img {
+      transform: scale(1.05);
+    }
+
+    .main-slide {
+      grid-row: 1 / 3;
+      grid-column: 1 / 2;
+    }
+
+    .side-slide-top {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+    }
+
+    .side-slide-bottom {
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <div class="title-group" id="groupTitle">Group Title</div>
+
+    <div class="slider fade-in" id="slider">
+      <!-- Slides will be rendered here -->
+    </div>
+
+    <div class="buttons">
+      <button id="upBtn">⬆️ Up</button>
+      <button id="downBtn">⬇️ Down</button>
+    </div>
+  </div>
+
+  <script>
+    const data = [
+      { title: "Flower", src: "https://plus.unsplash.com/premium_photo-1759432614458-1a85120c66d7?q=80&w=870&auto=format&fit=crop" },
+      { title: "Abstract Shape", src: "https://images.unsplash.com/photo-1759392658577-4324fb89b991?q=80&w=870&auto=format&fit=crop" },
+      { title: "Room", src: "https://images.unsplash.com/photo-1759388105240-6d169c2929cb?q=80&w=870&auto=format&fit=crop" },
+      { title: "Mountain", src: "https://images.unsplash.com/photo-1754038373296-77dfb664da12?q=80&w=775&auto=format&fit=crop" },
+      { title: "Laptop", src: "https://plus.unsplash.com/premium_photo-1730828574055-cd60d4559fbc?q=80&w=870&auto=format&fit=crop" },
+      { title: "Couch", src: "https://images.unsplash.com/photo-1743341942781-14f3c65603c4?q=80&w=871&auto=format&fit=crop" },
+      { title: "Sunglasses", src: "https://plus.unsplash.com/premium_photo-1759412040925-76f319b7c8f5?q=80&w=1056&auto=format&fit=crop" },
+      { title: "Stairs", src: "https://images.unsplash.com/photo-1758817488807-caa2ce2bf811?q=80&w=1034&auto=format&fit=crop" },
+      { title: "Beach", src: "https://images.unsplash.com/photo-1759222977064-7a75dc2b83b1?q=80&w=870&auto=format&fit=crop" }
+    ];
+
+    let currentIndex = 0;
+    const itemsPerPage = 3;
+    const slider = document.getElementById("slider");
+    const upBtn = document.getElementById("upBtn");
+    const downBtn = document.getElementById("downBtn");
+    const groupTitle = document.getElementById("groupTitle");
+
+    function renderSlider(withTransition = true) {
+      if (withTransition) {
+        slider.classList.remove("fade-in");
+        slider.classList.add("fade-out");
+      }
+
+      setTimeout(() => {
+        slider.innerHTML = "";
+
+        const visibleItems = data.slice(currentIndex, currentIndex + itemsPerPage);
+
+        // Main image (first)
+        const mainSlide = document.createElement("div");
+        mainSlide.className = "slide main-slide";
+        mainSlide.innerHTML = `<img src="${visibleItems[0]?.src}" alt="${visibleItems[0]?.title}">`;
+        slider.appendChild(mainSlide);
+
+        // Right top image (second)
+        const topSlide = document.createElement("div");
+        topSlide.className = "slide side-slide-top";
+        topSlide.innerHTML = `<img src="${visibleItems[1]?.src}" alt="${visibleItems[1]?.title}">`;
+        slider.appendChild(topSlide);
+
+        // Right bottom image (third)
+        const bottomSlide = document.createElement("div");
+        bottomSlide.className = "slide side-slide-bottom";
+        bottomSlide.innerHTML = `<img src="${visibleItems[2]?.src}" alt="${visibleItems[2]?.title}">`;
+        slider.appendChild(bottomSlide);
+
+        // Set title (from first image or custom group)
+        groupTitle.textContent = `Group: ${visibleItems.map(v => v.title).join(", ")}`;
+
+        // Buttons state
+        upBtn.disabled = currentIndex === 0;
+        downBtn.disabled = currentIndex + itemsPerPage >= data.length;
+
+        // Fade in
+        if (withTransition) {
+          slider.classList.remove("fade-out");
+          slider.classList.add("fade-in");
+        }
+      }, withTransition ? 200 : 0);
+    }
+
+    upBtn.addEventListener("click", () => {
+      if (currentIndex - itemsPerPage >= 0) {
+        currentIndex -= itemsPerPage;
+        renderSlider();
+      }
+    });
+
+    downBtn.addEventListener("click", () => {
+      if (currentIndex + itemsPerPage < data.length) {
+        currentIndex += itemsPerPage;
+        renderSlider();
+      }
+    });
+
+    renderSlider(false);
+  </script>
+
+</body>
+</html>
