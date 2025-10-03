@@ -40,7 +40,7 @@ If you want to be more specific, you can also add:
 > * Each project has **3 image URLs** and a `title` in a structured array
 
 ---
-
+<br>
 ### ✅ Prompt to Generate Code for a Touch Image Slider with Title Animation
 
 > Create an interactive **image slider web page** using **HTML, CSS, and JavaScript**. The layout should have:
@@ -63,4 +63,48 @@ If you want to be more specific, you can also add:
 > * Respect the user's "prefers-reduced-motion" settings.
 
 ---
+<br>
+---
+
+### ✅ Prompt to Generate the Code:
+
+> **Prompt:**
+>
+> Create a responsive HTML, CSS, and JavaScript media slider that displays three media items (images or videos) using CSS Grid. The layout should:
+>
+> * Use semantic `<section>` elements for each media block.
+> * On desktop and tablet (above 768px): use `grid-template-areas` for layout:
+>
+>   ```
+>   "main top"
+>   "main bottom"
+>   ```
+>
+>   where "main" takes up 80% width, and "top" and "bottom" stack on the right (20%).
+> * On mobile (max-width: 768px), display all items in a single column:
+>
+>   ```
+>   "main"
+>   "top"
+>   "bottom"
+>   ```
+> * The main slide can contain an image or video (auto-playing and muted if video).
+> * Use JavaScript to enable switching between projects with Up and Down buttons, and support swipe gestures on touch devices.
+> * Animate media transitions and project titles when changing slides.
+> * Include a few example projects using both images and videos.
+> * Style the layout with modern design, rounded corners, shadows, and CSS transitions.
+> * Ensure accessibility (e.g., keyboard focus on main media).
+> * Include mobile responsiveness and `prefers-reduced-motion` support.
+
+---
+
+### 📝 Optional Add-ons You Can Include in the Prompt:
+
+* Add pagination or indicator dots.
+* Add play/pause functionality.
+* Load media from an external JSON file.
+* Make it accessible with ARIA labels and keyboard controls.
+
+---
+
 
