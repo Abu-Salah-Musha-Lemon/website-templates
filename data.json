@@ -86,5 +86,12 @@
     "Technology": "Html, bootstrap",
     "imgLink": "./telco/index.html"
   }
+   ,
+  {
+    "ProjectName": " Responsive Media Slider with Grid Areas ",
+    "Technology": "Html, CSS, JS",
+    "imgLink": "./slide2/index6.html"
+  }
+
 
 ]
