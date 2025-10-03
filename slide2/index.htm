@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Grid Image Slider</title>
+  <title>Vertical Image Slider</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,14 +22,21 @@
       margin-bottom: 20px;
     }
 
+    .viewport {
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
     .slider {
       display: grid;
       grid-template-columns: 4fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 10px;
       height: 400px;
-      position: relative;
-      transition: opacity 0.5s ease-in-out;
+      position: absolute;
+      width: 100%;
+      transition: transform 0.5s ease-in-out;
     }
 
     .slide {
@@ -79,14 +86,6 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
-
-    .fade-out {
-      opacity: 0;
-    }
-
-    .fade-in {
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
@@ -94,8 +93,10 @@
   <div class="slider-container">
     <div class="title-group" id="groupTitle">Group Title</div>
 
-    <div class="slider fade-in" id="slider">
-      <!-- Slides will be rendered here -->
+    <div class="viewport" id="viewport">
+      <!-- Two sliders stacked for animation -->
+      <div class="slider" id="currentSlide"></div>
+      <div class="slider" id="nextSlide"></div>
     </div>
 
     <div class="buttons">
@@ -119,70 +120,76 @@
 
     let currentIndex = 0;
     const itemsPerPage = 3;
-    const slider = document.getElementById("slider");
+
+    const currentSlide = document.getElementById("currentSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    const groupTitle = document.getElementById("groupTitle");
     const upBtn = document.getElementById("upBtn");
     const downBtn = document.getElementById("downBtn");
-    const groupTitle = document.getElementById("groupTitle");
 
-    function renderSlider(withTransition = true) {
-      if (withTransition) {
-        slider.classList.remove("fade-in");
-        slider.classList.add("fade-out");
-      }
-
-      setTimeout(() => {
-        slider.innerHTML = "";
-
-        const visibleItems = data.slice(currentIndex, currentIndex + itemsPerPage);
-
-        // Main image (first)
-        const mainSlide = document.createElement("div");
-        mainSlide.className = "slide main-slide";
-        mainSlide.innerHTML = `<img src="${visibleItems[0]?.src}" alt="${visibleItems[0]?.title}">`;
-        slider.appendChild(mainSlide);
-
-        // Right top image (second)
-        const topSlide = document.createElement("div");
-        topSlide.className = "slide side-slide-top";
-        topSlide.innerHTML = `<img src="${visibleItems[1]?.src}" alt="${visibleItems[1]?.title}">`;
-        slider.appendChild(topSlide);
-
-        // Right bottom image (third)
-        const bottomSlide = document.createElement("div");
-        bottomSlide.className = "slide side-slide-bottom";
-        bottomSlide.innerHTML = `<img src="${visibleItems[2]?.src}" alt="${visibleItems[2]?.title}">`;
-        slider.appendChild(bottomSlide);
-
-        // Set title (from first image or custom group)
-        groupTitle.textContent = `Group: ${visibleItems.map(v => v.title).join(", ")}`;
-
-        // Buttons state
-        upBtn.disabled = currentIndex === 0;
-        downBtn.disabled = currentIndex + itemsPerPage >= data.length;
-
-        // Fade in
-        if (withTransition) {
-          slider.classList.remove("fade-out");
-          slider.classList.add("fade-in");
-        }
-      }, withTransition ? 200 : 0);
+    function createSlideHTML(visibleItems) {
+      return `
+        <div class="slide main-slide">
+          <img src="${visibleItems[0]?.src}" alt="${visibleItems[0]?.title}">
+        </div>
+        <div class="slide side-slide-top">
+          <img src="${visibleItems[1]?.src}" alt="${visibleItems[1]?.title}">
+        </div>
+        <div class="slide side-slide-bottom">
+          <img src="${visibleItems[2]?.src}" alt="${visibleItems[2]?.title}">
+        </div>
+      `;
     }
 
-    upBtn.addEventListener("click", () => {
-      if (currentIndex - itemsPerPage >= 0) {
-        currentIndex -= itemsPerPage;
-        renderSlider();
-      }
-    });
+    function renderInitialSlider() {
+      const visibleItems = data.slice(currentIndex, currentIndex + itemsPerPage);
+      currentSlide.innerHTML = createSlideHTML(visibleItems);
+      groupTitle.textContent = `Group: ${visibleItems.map(v => v.title).join(", ")}`;
+      updateButtons();
+    }
 
-    downBtn.addEventListener("click", () => {
-      if (currentIndex + itemsPerPage < data.length) {
-        currentIndex += itemsPerPage;
-        renderSlider();
-      }
-    });
+    function animateSlide(direction) {
+      const newIndex = direction === 'down' ? currentIndex + itemsPerPage : currentIndex - itemsPerPage;
 
-    renderSlider(false);
+      if (newIndex < 0 || newIndex >= data.length) return;
+
+      const visibleItems = data.slice(newIndex, newIndex + itemsPerPage);
+      nextSlide.innerHTML = createSlideHTML(visibleItems);
+      groupTitle.textContent = `Group: ${visibleItems.map(v => v.title).join(", ")}`;
+
+      // Set starting position
+      nextSlide.style.transform = `translateY(${direction === 'down' ? '100%' : '-100%'})`;
+      currentSlide.style.transform = 'translateY(0%)';
+
+      // Animate
+      requestAnimationFrame(() => {
+        currentSlide.style.transition = 'transform 0.5s ease-in-out';
+        nextSlide.style.transition = 'transform 0.5s ease-in-out';
+        currentSlide.style.transform = `translateY(${direction === 'down' ? '-100%' : '100%'})`;
+        nextSlide.style.transform = 'translateY(0%)';
+      });
+
+      // Swap slides after animation
+      setTimeout(() => {
+        currentSlide.innerHTML = nextSlide.innerHTML;
+        currentSlide.style.transition = 'none';
+        nextSlide.style.transition = 'none';
+        currentSlide.style.transform = 'translateY(0)';
+        nextSlide.style.transform = 'translateY(0)';
+        currentIndex = newIndex;
+        updateButtons();
+      }, 500);
+    }
+
+    function updateButtons() {
+      upBtn.disabled = currentIndex === 0;
+      downBtn.disabled = currentIndex + itemsPerPage >= data.length;
+    }
+
+    upBtn.addEventListener("click", () => animateSlide('up'));
+    downBtn.addEventListener("click", () => animateSlide('down'));
+
+    renderInitialSlider();
   </script>
 
 </body>
