@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image & Video Slider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --color-bg: #f5f7fa;
+      --color-text: #333333;
+      --color-primary: #0077cc;
+      --color-primary-hover: #005fa3;
+      --color-disabled: #cccccc;
+      --color-slide-bg: #ddd;
+      --color-slide-shadow: rgba(0, 0, 0, 0.08);
+
+      --spacing-base: 1rem;
+      --spacing-gap: 12px;
+      --border-radius: 10px;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      margin: 0;
+      padding: calc(var(--spacing-base) * 2);
+      text-align: center;
+    }
+
+    .slider-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: var(--spacing-base);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 4fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: var(--spacing-gap);
+      height: 400px;
+      position: relative;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .slide {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      background-color: var(--color-slide-bg);
+      box-shadow: 0 4px 12px var(--color-slide-shadow);
+    }
+
+    .main-slide {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+
+    .side-slide-top {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .side-slide-bottom {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .slide img,
+    .slide video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, opacity 0.6s ease, filter 0.4s ease;
+      z-index: 1;
+      will-change: transform, opacity, filter;
+    }
+
+    .fade-out {
+      opacity: 0;
+      filter: blur(6px);
+      transition: opacity 0.4s ease, filter 0.4s ease;
+      z-index: 2;
+    }
+
+    .project-title-wrapper {
+      position: relative;
+      height: 32px;
+      margin-top: calc(var(--spacing-base) * 2);
+      overflow: hidden;
+    }
+
+    .project-title {
+      position: absolute;
+      width: 100%;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--color-text);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      will-change: transform, opacity;
+    }
+
+    .buttons {
+      margin-top: calc(var(--spacing-base) * 3);
+    }
+
+    button {
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      background-color: var(--color-primary);
+      border: none;
+      border-radius: 6px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: var(--color-primary-hover);
+    }
+
+    button:disabled {
+      background-color: var(--color-disabled);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        height: 300px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .main-slide {
+        grid-row: 1 / 2;
+      }
+
+      .side-slide-top {
+        grid-row: 2 / 3;
+      }
+
+      .side-slide-bottom {
+        grid-row: 3 / 4;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slider-container {
+        padding: var(--spacing-base);
+      }
+
+      .grid {
+        height: 240px;
+        gap: 8px;
+      }
+
+      .project-title-wrapper {
+        height: 28px;
+      }
+
+      .project-title {
+        font-size: 1.1rem;
+      }
+
+      button {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+        margin: 4px 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <div class="grid" id="sliderGrid">
+      <div class="slide main-slide" id="mainSlide"></div>
+      <div class="slide side-slide-top" id="topSlide"></div>
+      <div class="slide side-slide-bottom" id="bottomSlide"></div>
+    </div>
+
+    <div class="project-title-wrapper">
+      <div class="project-title" id="projectTitle">Project Title</div>
+    </div>
+
+    <div class="buttons">
+      <button id="upBtn">⬆️ Up</button>
+      <button id="downBtn">⬇️ Down</button>
+    </div>
+  </div>
+
+  <script>
+    const projects = [
+      {
+        title: "Nature & Motion",
+        media: [
+          { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+          { type: "image", src: "https://images.unsplash.com/photo-1759392658577-4324fb89b991?q=80&w=870&auto=format&fit=crop" },
+          { type: "image", src: "https://images.unsplash.com/photo-1759388105240-6d169c2929cb?q=80&w=870&auto=format&fit=crop" }
+        ]
+      },
+      {
+        title: "Creative Studio",
+        media: [
+          { type: "image", src: "https://images.unsplash.com/photo-1754038373296-77dfb664da12?q=80&w=775&auto=format&fit=crop" },
+          { type: "video", src: "https://www.w3schools.com/html/movie.mp4" },
+          { type: "image", src: "https://images.unsplash.com/photo-1743341942781-14f3c65603c4?q=80&w=871&auto=format&fit=crop" }
+        ]
+      },
+      {
+        title: "Urban Minimal",
+        media: [
+          { type: "image", src: "https://plus.unsplash.com/premium_photo-1759412040925-76f319b7c8f5?q=80&w=1056&auto=format&fit=crop" },
+          { type: "image", src: "https://images.unsplash.com/photo-1758817488807-caa2ce2bf811?q=80&w=1034&auto=format&fit=crop" },
+          { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" }
+        ]
+      }
+    ];
+
+    let currentIndex = 0;
+    const mainSlide = document.getElementById("mainSlide");
+    const topSlide = document.getElementById("topSlide");
+    const bottomSlide = document.getElementById("bottomSlide");
+    const projectTitle = document.getElementById("projectTitle");
+    const upBtn = document.getElementById("upBtn");
+    const downBtn = document.getElementById("downBtn");
+    const sliderGrid = document.getElementById("sliderGrid");
+
+    function createMediaElement({ type, src }, isMain = false) {
+      let el;
+
+      if (type === "video") {
+        el = document.createElement("video");
+        el.src = src;
+        el.autoplay = true;
+        el.loop = true;
+        el.muted = true;
+        el.playsInline = true;
+      } else {
+        el = document.createElement("img");
+        el.src = src;
+        el.alt = "Project Image";
+      }
+
+      if (isMain) el.setAttribute("tabindex", "0");
+      el.style.opacity = "0";
+
+      el.addEventListener("loadeddata", () => (el.style.opacity = "1"));
+      el.addEventListener("load", () => (el.style.opacity = "1"));
+
+      return el;
+    }
+
+    function updateButtons() {
+      upBtn.disabled = currentIndex === 0;
+      downBtn.disabled = currentIndex === projects.length - 1;
+    }
+
+    function animateTitle(newTitle) {
+      projectTitle.style.transform = "translateY(-100%)";
+      projectTitle.style.opacity = "0";
+
+      setTimeout(() => {
+        projectTitle.textContent = newTitle;
+        projectTitle.style.transition = "none";
+        projectTitle.style.transform = "translateY(100%)";
+
+        requestAnimationFrame(() => {
+          projectTitle.style.transition = "transform 0.4s ease, opacity 0.4s ease";
+          projectTitle.style.transform = "translateY(0%)";
+          projectTitle.style.opacity = "1";
+        });
+      }, 300);
+    }
+
+    function animateImageChange(direction) {
+      const nextIndex = direction === 'down' ? currentIndex + 1 : currentIndex - 1;
+      if (nextIndex < 0 || nextIndex >= projects.length) return;
+
+      const nextProject = projects[nextIndex];
+      const mainMedia = createMediaElement(nextProject.media[0], true);
+      const topMedia = createMediaElement(nextProject.media[1]);
+      const bottomMedia = createMediaElement(nextProject.media[2]);
+
+      const offset = direction === 'down' ? 100 : -100;
+      const newItems = [mainMedia, topMedia, bottomMedia];
+      const slides = [mainSlide, topSlide, bottomSlide];
+
+      newItems.forEach(el => {
+        el.style.transform = `translateY(${offset}%) scale(1.05)`;
+        el.style.filter = "blur(6px)";
+      });
+
+      mainSlide.appendChild(mainMedia);
+      topSlide.appendChild(topMedia);
+      bottomSlide.appendChild(bottomMedia);
+
+      requestAnimationFrame(() => {
+        newItems.forEach(el => {
+          el.style.transition = "transform 0.6s ease, opacity 0.6s ease, filter 0.4s ease";
+          el.style.transform = "translateY(0%) scale(1)";
+          el.style.filter = "blur(0)";
+          el.style.opacity = "1";
+        });
+
+        slides.forEach(container => {
+          if (container.children.length > 1) {
+            container.children[0].classList.add("fade-out");
+          }
+        });
+
+        setTimeout(() => {
+          slides.forEach(container => {
+            if (container.children.length > 1) {
+              container.removeChild(container.children[0]);
+            }
+          });
+
+          currentIndex = nextIndex;
+          updateButtons();
+          animateTitle(nextProject.title);
+          mainMedia.focus();
+        }, 600);
+      });
+    }
+
+    function renderInitial() {
+      const p = projects[currentIndex];
+      mainSlide.appendChild(createMediaElement(p.media[0], true));
+      topSlide.appendChild(createMediaElement(p.media[1]));
+      bottomSlide.appendChild(createMediaElement(p.media[2]));
+      projectTitle.textContent = p.title;
+      updateButtons();
+    }
+
+    upBtn.addEventListener("click", () => animateImageChange('up'));
+    downBtn.addEventListener("click", () => animateImageChange('down'));
+
+    let startY = 0;
+    sliderGrid.addEventListener("touchstart", (e) => {
+      startY = e.touches[0].clientY;
+    });
+
+    sliderGrid.addEventListener("touchend", (e) => {
+      const endY = e.changedTouches[0].clientY;
+      const diff = endY - startY;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          animateImageChange('up');
+        } else {
+          animateImageChange('down');
+        }
+      }
+    });
+
+    renderInitial();
+  </script>
+
+</body>
+</html>
