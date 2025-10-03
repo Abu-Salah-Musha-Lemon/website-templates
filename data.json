@@ -1,97 +1,87 @@
 [
   {
     "ProjectName": "Education",
-    "Technology": "Html, CSS",
+    "Technology": "HTML, CSS",
     "imgLink": "./educational/index.html"
   },
   {
-    "ProjectName": "card",
-    "Technology": "Html, CSS",
+    "ProjectName": "Card",
+    "Technology": "HTML, CSS",
     "imgLink": "./card/index.html"
   },
   {
-    "ProjectName": "Card-2",
-    "Technology": "Html",
+    "ProjectName": "Card 2",
+    "Technology": "HTML",
     "imgLink": "./card/index2.html"
   },
   {
     "ProjectName": "Drag and Drop",
-    "Technology": "Html, CSS",
+    "Technology": "HTML, CSS",
     "imgLink": "./dragAndDrop/index.html"
   },
   {
     "ProjectName": "POS",
-    "Technology": "Html, CSS",
+    "Technology": "HTML, CSS",
     "imgLink": "./pos/index.html"
   },
   {
-    "ProjectName": "slider",
-    "Technology": "Html, CSS",
+    "ProjectName": "Slider",
+    "Technology": "HTML, CSS",
     "imgLink": "./slider/index.html"
-  }
-  ,
+  },
   {
-    "ProjectName": "ajax",
-    "Technology": "Html, CSS , php, mysql,ajax",
+    "ProjectName": "AJAX",
+    "Technology": "HTML, CSS, PHP, MySQL, AJAX",
     "imgLink": "./ajax/index.html"
-  }
-  ,
+  },
   {
-    "ProjectName": "WEB",
-    "Technology": "Html, CSS ",
+    "ProjectName": "Web",
+    "Technology": "HTML, CSS",
     "imgLink": "./CSE/index.html"
   },
   {
-    "ProjectName": "CRUD demo",
-    "Technology": "Html, CSS,bootstrap-5,jquery, modal ",
+    "ProjectName": "CRUD Demo",
+    "Technology": "HTML, CSS, Bootstrap 5, jQuery, Modal",
     "imgLink": "./bootstrap/index.html"
   },
   {
-    "ProjectName": "Shopping Card  demo",
-    "Technology": "Html,bootstrap-5,js,",
+    "ProjectName": "Shopping Cart Demo",
+    "Technology": "HTML, Bootstrap 5, JS",
     "imgLink": "./ShoppingCard/index.html"
   },
   {
     "ProjectName": "Custom Print DataTable",
-    "Technology": "Html,bootstrap-5,js,",
+    "Technology": "HTML, Bootstrap 5, JS",
     "imgLink": "./dataTable/index.html"
-  }
-  ,
+  },
   {
     "ProjectName": "Responsive Code",
-    "Technology": "Html",
+    "Technology": "HTML",
     "imgLink": "./responsive/index.html"
-  }
-  ,
+  },
   {
-    "ProjectName": "Tablet view POS",
-    "Technology": "Html,CSS",
+    "ProjectName": "Tablet View POS",
+    "Technology": "HTML, CSS",
     "imgLink": "./pos2/index.html"
-  }
-  ,
+  },
   {
-    "ProjectName": "Pdf preview",
-    "Technology": "Html, bootstrap",
+    "ProjectName": "PDF Preview",
+    "Technology": "HTML, Bootstrap",
     "imgLink": "./card/pdf.htm"
-  }
-  ,
+  },
   {
-    "ProjectName": "CSE Department ",
-    "Technology": "Html, bootstrap",
+    "ProjectName": "CSE Department",
+    "Technology": "HTML, Bootstrap",
     "imgLink": "./CSEdef/index.html"
-  }
-  ,
+  },
   {
-    "ProjectName": "Telco ",
-    "Technology": "Html, bootstrap",
+    "ProjectName": "Telco",
+    "Technology": "HTML, Bootstrap",
     "imgLink": "./telco/index.html"
-  }
-   ,
+  },
   {
-    "ProjectName": " Responsive Media Slider with Grid Areas ",
-    "Technology": "Html, CSS, JS",
+    "ProjectName": "Responsive Media Slider with Grid Areas",
+    "Technology": "HTML, CSS, JS",
     "imgLink": "./slide/index.html"
   }
-
-
 ]
