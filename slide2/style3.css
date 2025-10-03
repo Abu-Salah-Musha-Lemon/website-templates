@@ -1,0 +1,219 @@
+/* ================================
+   CSS Variables: Colors & Spacing
+================================== */
+:root {
+  /* Colors */
+  --color-bg: #f5f7fa;
+  --color-text: #333333;
+  --color-primary: #0077cc;
+  --color-primary-hover: #005fa3;
+  --color-disabled: #cccccc;
+  --color-slide-bg: #ddd;
+  --color-slide-shadow: rgba(0, 0, 0, 0.08);
+
+  /* Spacing */
+  --spacing-base: 1rem;
+  --spacing-gap: 12px;
+  --border-radius: 10px;
+
+  /* Font */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================================
+   Global Styles
+================================== */
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  padding: calc(var(--spacing-base) * 2);
+  text-align: center;
+}
+
+/* ================================
+   Container
+================================== */
+.slider-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--spacing-base);
+}
+
+/* ================================
+   Grid Layout for Slides
+================================== */
+.grid {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--spacing-gap);
+  height: 400px;
+  position: relative;
+  user-select: none;
+  touch-action: none; /* Disable touch scrolling during swipe */
+}
+
+/* ================================
+   Slide Frames
+================================== */
+.slide {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: var(--color-slide-bg);
+  box-shadow: 0 4px 12px var(--color-slide-shadow);
+}
+
+/* Main large image on the left spanning two rows */
+.main-slide {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+/* Small stacked images on the right */
+.side-slide-top {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.side-slide-bottom {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+/* ================================
+   Images Styling with Transition
+================================== */
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 1;
+}
+
+/* ================================
+   Project Title Styles & Animation
+================================== */
+.project-title-wrapper {
+  position: relative;
+  height: 32px;
+  margin-top: calc(var(--spacing-base) * 2);
+  overflow: hidden;
+}
+
+.project-title {
+  position: absolute;
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+/* ================================
+   Buttons Styling
+================================== */
+.buttons {
+  margin-top: calc(var(--spacing-base) * 3);
+}
+
+button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+button:disabled {
+  background-color: var(--color-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ================================
+   Responsive Media Queries
+================================== */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+  .grid {
+    height: 300px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .main-slide {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .side-slide-top {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .side-slide-bottom {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+
+  button {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    margin: 5px 8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .slider-container {
+    padding: var(--spacing-base);
+  }
+
+  .grid {
+    height: 240px;
+    gap: 8px;
+  }
+
+  .project-title-wrapper {
+    height: 28px;
+    margin-top: var(--spacing-base);
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  button {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+    margin: 4px 6px;
+  }
+}
+
+/* ================================
+   Accessibility: Reduce Motion
+================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
