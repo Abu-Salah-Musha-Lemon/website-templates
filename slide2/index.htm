@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fixed Frame Project Slider</title>
+  <title>Vertical Slide Project Images</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
       background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
     }
 
     .slider-container {
@@ -22,6 +22,7 @@
       grid-template-rows: 1fr 1fr;
       gap: 10px;
       height: 400px;
+      position: relative;
     }
 
     .slide {
@@ -31,11 +32,13 @@
     }
 
     .slide img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
+      transition: transform 0.5s ease, opacity 0.3s ease;
     }
 
     .main-slide {
@@ -80,15 +83,9 @@
 
   <div class="slider-container">
     <div class="grid">
-      <div class="slide main-slide">
-        <img id="mainImg" tabindex="0" src="" alt="Main Image">
-      </div>
-      <div class="slide side-slide-top">
-        <img id="topImg" src="" alt="Side Image Top">
-      </div>
-      <div class="slide side-slide-bottom">
-        <img id="bottomImg" src="" alt="Side Image Bottom">
-      </div>
+      <div class="slide main-slide" id="mainSlide"></div>
+      <div class="slide side-slide-top" id="topSlide"></div>
+      <div class="slide side-slide-bottom" id="bottomSlide"></div>
     </div>
 
     <div class="project-title" id="projectTitle">Project Title</div>
@@ -128,54 +125,94 @@
     ];
 
     let currentIndex = 0;
-    const mainImg = document.getElementById("mainImg");
-    const topImg = document.getElementById("topImg");
-    const bottomImg = document.getElementById("bottomImg");
+
     const projectTitle = document.getElementById("projectTitle");
     const upBtn = document.getElementById("upBtn");
     const downBtn = document.getElementById("downBtn");
 
-    function showProject(index) {
-      const project = projects[index];
+    const mainSlide = document.getElementById("mainSlide");
+    const topSlide = document.getElementById("topSlide");
+    const bottomSlide = document.getElementById("bottomSlide");
 
-      // Fade out
-      [mainImg, topImg, bottomImg].forEach(img => img.style.opacity = 0);
-
-      setTimeout(() => {
-        // Change src
-        mainImg.src = project.images[0];
-        topImg.src = project.images[1];
-        bottomImg.src = project.images[2];
-        projectTitle.textContent = project.title;
-
-        // Fade in
-        [mainImg, topImg, bottomImg].forEach(img => img.style.opacity = 1);
-
-        // Focus on main image
-        mainImg.focus();
-
-        // Update buttons
-        upBtn.disabled = index === 0;
-        downBtn.disabled = index === projects.length - 1;
-      }, 200); // timing between fade
+    function createImageElement(src, isMain = false) {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Project Image";
+      if (isMain) img.setAttribute("tabindex", "0");
+      return img;
     }
 
-    upBtn.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        showProject(currentIndex);
-      }
-    });
+    function updateButtons() {
+      upBtn.disabled = currentIndex === 0;
+      downBtn.disabled = currentIndex === projects.length - 1;
+    }
 
-    downBtn.addEventListener("click", () => {
-      if (currentIndex < projects.length - 1) {
-        currentIndex++;
-        showProject(currentIndex);
-      }
-    });
+    function renderImages(project) {
+      // Clear current images
+      mainSlide.innerHTML = "";
+      topSlide.innerHTML = "";
+      bottomSlide.innerHTML = "";
 
-    // Initial render
-    showProject(currentIndex);
+      mainSlide.appendChild(createImageElement(project.images[0], true));
+      topSlide.appendChild(createImageElement(project.images[1]));
+      bottomSlide.appendChild(createImageElement(project.images[2]));
+
+      projectTitle.textContent = project.title;
+    }
+
+    function animateImageChange(direction) {
+      const nextIndex = direction === 'down' ? currentIndex + 1 : currentIndex - 1;
+      if (nextIndex < 0 || nextIndex >= projects.length) return;
+
+      const currentProject = projects[currentIndex];
+      const nextProject = projects[nextIndex];
+
+      // Create new images
+      const mainImg = createImageElement(nextProject.images[0], true);
+      const topImg = createImageElement(nextProject.images[1]);
+      const bottomImg = createImageElement(nextProject.images[2]);
+
+      const offset = direction === 'down' ? 100 : -100;
+
+      [mainImg, topImg, bottomImg].forEach(img => {
+        img.style.transform = `translateY(${offset}%)`;
+        img.style.opacity = "0";
+      });
+
+      // Append to DOM
+      mainSlide.appendChild(mainImg);
+      topSlide.appendChild(topImg);
+      bottomSlide.appendChild(bottomImg);
+
+      requestAnimationFrame(() => {
+        [mainImg, topImg, bottomImg].forEach(img => {
+          img.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+          img.style.transform = "translateY(0%)";
+          img.style.opacity = "1";
+        });
+
+        // Remove previous images after transition
+        setTimeout(() => {
+          if (mainSlide.children.length > 1) mainSlide.removeChild(mainSlide.children[0]);
+          if (topSlide.children.length > 1) topSlide.removeChild(topSlide.children[0]);
+          if (bottomSlide.children.length > 1) bottomSlide.removeChild(bottomSlide.children[0]);
+
+          // Update title and focus
+          currentIndex = nextIndex;
+          updateButtons();
+          projectTitle.textContent = nextProject.title;
+          mainImg.focus();
+        }, 500);
+      });
+    }
+
+    upBtn.addEventListener("click", () => animateImageChange('up'));
+    downBtn.addEventListener("click", () => animateImageChange('down'));
+
+    // Initial load
+    renderImages(projects[currentIndex]);
+    updateButtons();
+    mainSlide.querySelector("img").focus();
   </script>
 
 </body>
