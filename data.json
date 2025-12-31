@@ -88,5 +88,10 @@
     "ProjectName": "Responsive Photo card",
     "Technology": "HTML, CSS, JS",
     "imgLink": "./photocard/index.html"
+  },
+    {
+    "ProjectName": "Responsive Photo card",
+    "Technology": "HTML, CSS, JS",
+    "imgLink": "./photocard/index2.html"
   }
 ]
