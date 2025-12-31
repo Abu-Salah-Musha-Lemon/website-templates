@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2026 New Year Photocard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Sora:wght@400;500;600;700&display=swap');
+
+    :root{
+      --bg0:#070816;
+      --bg1:#0B1028;
+      --card:#0e1433cc;
+      --stroke:#ffffff1a;
+      --text:#eaf0ff;
+      --muted:#b9c4ee;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow2: 0 10px 30px rgba(0,0,0,.35);
+      --r: 20px;
+      --accent: #7C5CFF;
+      --accent2:#00E5FF;
+      --ok:#2EE59D;
+      --warn:#FFCA6A;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Sora, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 900px at 12% 18%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(900px 700px at 84% 22%, rgba(0,229,255,.22), transparent 60%),
+        radial-gradient(1100px 900px at 58% 92%, rgba(46,229,157,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    .noise{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.35;
+    }
+
+    .wrap{max-width:1120px; margin:0 auto; padding:26px 16px 28px}
+    header{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+      margin-bottom:16px;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .kicker{
+      font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+      color:rgba(234,240,255,.76);
+    }
+    h1{
+      margin:0;
+      font-family: Fraunces, ui-serif, Georgia, serif;
+      font-weight:800;
+      letter-spacing:.01em;
+      font-size: clamp(26px, 4.2vw, 40px);
+      line-height:1.05;
+      text-shadow: 0 10px 50px rgba(0,0,0,.35);
+    }
+    .sub{
+      margin:0;
+      color: rgba(185,196,238,.92);
+      font-size: 14px;
+      line-height:1.5;
+      max-width: 54ch;
+    }
+
+    .pillRow{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+    .pill{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(12px);
+      padding:10px 12px;
+      border-radius:999px;
+      display:flex; align-items:center; gap:10px;
+      box-shadow: 0 10px 32px rgba(0,0,0,.18);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 5px rgba(124,92,255,.13), 0 0 18px rgba(0,229,255,.18);
+    }
+    .pill b{font-size:12px}
+    .pill span{font-size:12px; color:rgba(234,240,255,.78)}
+    .btnSm{
+      appearance:none;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 12px;
+      cursor:pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .btnSm:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); box-shadow: 0 16px 45px rgba(0,0,0,.24)}
+    .btnSm:active{transform: translateY(0px) scale(.99)}
+    .btnSm:focus-visible{outline: 2px solid rgba(0,229,255,.55); outline-offset: 3px}
+
+    main{
+      display:grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      header{flex-direction:column; align-items:flex-start}
+      .pillRow{justify-content:flex-start}
+      main{grid-template-columns: 1fr; gap: 14px}
+    }
+
+    .panel{
+      border-radius: var(--r);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .panel .hd{
+      padding: 14px 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .panel .hd h2{
+      margin:0;
+      font-size: 14px;
+      letter-spacing:.01em;
+      color: rgba(234,240,255,.92);
+    }
+    .panel .hd p{
+      margin:0;
+      font-size: 12px;
+      color: rgba(185,196,238,.86);
+    }
+    .panel .bd{padding: 14px}
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 520px){
+      .grid2{grid-template-columns:1fr}
+    }
+
+    label{
+      display:flex; flex-direction:column; gap:7px;
+      font-size: 12px;
+      color: rgba(185,196,238,.92);
+    }
+    input[type="text"], textarea, select{
+      width:100%;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(8,10,24,.35);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 11px 12px;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.20) inset;
+      transition: border-color .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    textarea{min-height: 92px; resize: vertical}
+    input[type="text"]::placeholder, textarea::placeholder{color: rgba(185,196,238,.55)}
+    input[type="text"]:focus, textarea:focus, select:focus{
+      outline:none;
+      border-color: rgba(0,229,255,.45);
+      box-shadow: 0 0 0 4px rgba(0,229,255,.12), 0 10px 30px rgba(0,0,0,.20) inset;
+      background: rgba(8,10,24,.44);
+      transform: translateY(-1px);
+    }
+
+    .row{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+
+    .file{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.04);
+    }
+    .file input[type="file"]{display:none}
+    .file .pick{
+      cursor:pointer;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-weight: 700;
+      font-size: 12px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      user-select:none;
+    }
+    .file .pick:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.24)}
+    .file .meta{
+      display:flex; flex-direction:column; gap:2px;
+      min-width: 180px;
+    }
+    .file .meta b{font-size:12px}
+    .file .meta span{font-size:12px; color: rgba(185,196,238,.85)}
+    .hint{
+      font-size:12px;
+      color: rgba(185,196,238,.86);
+      margin-top: 10px;
+      line-height:1.55;
+    }
+
+    .range{
+      display:flex; flex-direction:column; gap:8px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .range .top{display:flex; justify-content:space-between; gap:10px; align-items:baseline}
+    .range .top b{font-size:12px}
+    .range .top span{font-size:12px; color: rgba(185,196,238,.90)}
+    input[type="range"]{
+      width:100%;
+      accent-color: var(--accent2);
+    }
+
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, filter .18s ease;
+      box-shadow: 0 14px 40px rgba(0,0,0,.20);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.24);
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+    }
+    .btn:active{transform: translateY(0px) scale(.99)}
+    .btn:focus-visible{outline: 2px solid rgba(0,229,255,.55); outline-offset: 3px}
+    .btn.primary{
+      border-color: rgba(0,229,255,.32);
+      background: linear-gradient(135deg, rgba(124,92,255,.26), rgba(0,229,255,.18));
+    }
+    .btn.primary:hover{filter: brightness(1.05)}
+    .btn.ghost{background: transparent}
+
+    .previewShell{
+      padding: 14px;
+    }
+    .previewStage{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 700px at 24% 20%, rgba(124,92,255,.12), transparent 55%),
+        radial-gradient(750px 620px at 82% 34%, rgba(0,229,255,.10), transparent 55%),
+        radial-gradient(850px 760px at 60% 95%, rgba(46,229,157,.08), transparent 55%),
+        rgba(0,0,0,.14);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      min-height: 420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px;
+    }
+    .canvasWrap{
+      width: min(520px, 100%);
+      aspect-ratio: 4 / 5;
+      position:relative;
+      border-radius: 22px;
+      overflow:hidden;
+      box-shadow: 0 26px 90px rgba(0,0,0,.45);
+      transform: translateZ(0);
+    }
+    canvas{
+      width:100%;
+      height:100%;
+      display:block;
+      background: transparent;
+    }
+
+    .sparkles{
+      position:absolute; inset:-30px;
+      pointer-events:none;
+      opacity:.9;
+      filter: blur(.2px);
+      mix-blend-mode: screen;
+    }
+    .sparkles i{
+      position:absolute;
+      width: 3px; height: 3px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.9);
+      box-shadow:
+        0 0 0 6px rgba(255,255,255,.03),
+        0 0 14px rgba(0,229,255,.20),
+        0 0 20px rgba(124,92,255,.16);
+      animation: tw 4.8s infinite ease-in-out;
+    }
+    @keyframes tw{
+      0%,100%{transform: translate3d(0,0,0) scale(.65); opacity:.45}
+      45%{transform: translate3d(0,-14px,0) scale(1.05); opacity:.95}
+      70%{transform: translate3d(0,-10px,0) scale(.9); opacity:.75}
+    }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(12,16,38,.72);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(234,240,255,.95);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-size: 12px;
+      box-shadow: 0 16px 55px rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .22s ease, transform .22s ease;
+      display:flex; align-items:center; gap:8px;
+      max-width: calc(100vw - 24px);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+    .badge{
+      font-weight:800;
+      background: linear-gradient(135deg, rgba(46,229,157,.22), rgba(0,229,255,.14));
+      border: 1px solid rgba(0,229,255,.22);
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing:.01em;
+    }
+
+    .srOnly{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="kicker">New Year • Photocard Studio</div>
+        <h1>Beautiful 2026 New Year Photocard</h1>
+        <p class="sub">Upload a photo, choose a vibe, personalize the message, then download a crisp PNG—ready to post or print.</p>
+      </div>
+
+      <div class="pillRow">
+        <div class="pill" title="Live preview">
+          <div class="dot"></div>
+          <div>
+            <b>Live Preview</b><br/>
+            <span>1080×1350 export</span>
+          </div>
+        </div>
+        <button class="btnSm" id="randomizeBtn" type="button">Refresh Sparkle</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" aria-label="Controls">
+        <div class="hd">
+          <div>
+            <h2>Customize</h2>
+            <p>Make it yours in seconds.</p>
+          </div>
+        </div>
+
+        <div class="bd">
+          <div class="file">
+            <label class="pick" for="photoInput">Upload Photo</label>
+            <input id="photoInput" type="file" accept="image/*" />
+            <div class="meta">
+              <b id="photoName">No photo selected</b>
+              <span>Tip: portraits look amazing</span>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="grid2">
+            <label>
+              Template
+              <select id="templateSelect">
+                <option value="midnight">Midnight Luxe</option>
+                <option value="aurora">Aurora Glow</option>
+                <option value="champagne">Champagne Gold</option>
+              </select>
+            </label>
+
+            <label>
+              Accent
+              <input id="accentInput" type="text" placeholder="#7C5CFF" inputmode="text" autocomplete="off" />
+            </label>
+
+            <label>
+              Greeting
+              <input id="greetingInput" type="text" placeholder="Happy New Year" />
+            </label>
+
+            <label>
+              To / Name
+              <input id="nameInput" type="text" placeholder="Alex" />
+            </label>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <label>
+            Message
+            <textarea id="messageInput" placeholder="Wishing you a bright start, bold dreams, and a year full of wins."></textarea>
+          </label>
+
+          <div style="height:12px"></div>
+
+          <div class="grid2">
+            <div class="range">
+              <div class="top"><b>Photo Zoom</b><span id="zoomVal">1.05×</span></div>
+              <input id="zoomRange" type="range" min="1" max="1.6" step="0.01" value="1.05" />
+            </div>
+
+            <div class="range">
+              <div class="top"><b>Photo Position</b><span id="posVal">0%</span></div>
+              <input id="posRange" type="range" min="-30" max="30" step="1" value="0" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="downloadBtn" type="button">Download PNG</button>
+            <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+            <button class="btn" id="copyBtn" type="button">Copy Message</button>
+          </div>
+
+          <p class="hint">
+            Your photo is placed in a rounded “glass” frame, with fireworks + bokeh layered behind. Export is high-res and looks great on social or as a printed card.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Preview">
+        <div class="hd">
+          <div>
+            <h2>Preview</h2>
+            <p>Live render on canvas.</p>
+          </div>
+        </div>
+
+        <div class="previewShell">
+          <div class="previewStage">
+            <div class="canvasWrap" aria-label="Photocard canvas">
+              <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+              <canvas id="cardCanvas" width="1080" height="1350"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="badge" id="toastBadge">Saved</span>
+    <span id="toastText">Downloaded.</span>
+  </div>
+
+  <script>
+    (() => {
+      const $ = (s) => document.querySelector(s);
+
+      const canvas = $("#cardCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const photoInput = $("#photoInput");
+      const photoName = $("#photoName");
+      const templateSelect = $("#templateSelect");
+      const accentInput = $("#accentInput");
+      const greetingInput = $("#greetingInput");
+      const nameInput = $("#nameInput");
+      const messageInput = $("#messageInput");
+      const zoomRange = $("#zoomRange");
+      const posRange = $("#posRange");
+      const zoomVal = $("#zoomVal");
+      const posVal = $("#posVal");
+
+      const downloadBtn = $("#downloadBtn");
+      const resetBtn = $("#resetBtn");
+      const copyBtn = $("#copyBtn");
+      const randomizeBtn = $("#randomizeBtn");
+
+      const toast = $("#toast");
+      const toastText = $("#toastText");
+      const toastBadge = $("#toastBadge");
+
+      const sparklesEl = $("#sparkles");
+
+      const W = canvas.width, H = canvas.height;
+
+      const state = {
+        template: "midnight",
+        accent: "#7C5CFF",
+        greeting: "Happy New Year",
+        name: "Alex",
+        message: "Wishing you a bright start, bold dreams, and a year full of wins.",
+        zoom: 1.05,
+        y: 0,
+        seed: Math.floor(Math.random() * 1e9),
+        img: null
+      };
+
+      function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+      function mulberry32(a){
+        return function() {
+          let t = a += 0x6D2B79F5;
+          t = Math.imul(t ^ (t >>> 15), t | 1);
+          t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        }
+      }
+
+      function roundRectPath(c, x, y, w, h, r){
+        const rr = Math.min(r, w/2, h/2);
+        c.beginPath();
+        c.moveTo(x+rr, y);
+        c.arcTo(x+w, y, x+w, y+h, rr);
+        c.arcTo(x+w, y+h, x, y+h, rr);
+        c.arcTo(x, y+h, x, y, rr);
+        c.arcTo(x, y, x+w, y, rr);
+        c.closePath();
+      }
+
+      function hexToRgb(hex){
+        const h = (hex || "").trim().replace("#","");
+        if(!/^[0-9a-fA-F]{6}$/.test(h)) return null;
+        const n = parseInt(h, 16);
+        return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+      }
+
+      function niceHexOrFallback(input, fallback){
+        const rgb = hexToRgb(input);
+        return rgb ? ("#" + input.trim().replace("#","").toUpperCase()) : fallback;
+      }
+
+      function toastShow(badge, text){
+        toastBadge.textContent = badge;
+        toastText.textContent = text;
+        toast.classList.add("show");
+        clearTimeout(toast._t);
+        toast._t = setTimeout(() => toast.classList.remove("show"), 1800);
+      }
+
+      function setSparkles(seed){
+        sparklesEl.innerHTML = "";
+        const rand = mulberry32(seed ^ 0xA53C11);
+        const n = 18;
+        for(let i=0;i<n;i++){
+          const dot = document.createElement("i");
+          const x = rand()*100;
+          const y = rand()*100;
+          const s = 2 + rand()*3;
+          const d = (rand()*3.8).toFixed(2) + "s";
+          const delay = (-rand()*4.5).toFixed(2) + "s";
+          dot.style.left = x + "%";
+          dot.style.top = y + "%";
+          dot.style.width = s + "px";
+          dot.style.height = s + "px";
+          dot.style.animationDuration = d;
+          dot.style.animationDelay = delay;
+          dot.style.opacity = (0.35 + rand()*0.65).toFixed(2);
+          sparklesEl.appendChild(dot);
+        }
+      }
+
+      function drawBackground(template, accent, seed){
+        const rand = mulberry32(seed ^ 0xC0FFEE);
+
+        let stops;
+        if(template === "aurora"){
+          stops = [
+            ["#071022", "#0B1746"],
+            ["rgba(0,229,255,.26)", "rgba(124,92,255,.20)"],
+            ["rgba(46,229,157,.16)", "rgba(255,255,255,0)"]
+          ];
+        } else if(template === "champagne"){
+          stops = [
+            ["#0A0B14", "#151018"],
+            ["rgba(255,202,106,.24)", "rgba(255,255,255,0)"],
+            ["rgba(255,110,199,.10)", "rgba(124,92,255,.10)"]
+          ];
+        } else {
+          stops = [
+            ["#050816", "#0B1028"],
+            ["rgba(124,92,255,.28)", "rgba(0,229,255,.14)"],
+            ["rgba(46,229,157,.12)", "rgba(255,255,255,0)"]
+          ];
+        }
+
+        // Base gradient
+        const g = ctx.createLinearGradient(0, 0, 0, H);
+        g.addColorStop(0, stops[0][0]);
+        g.addColorStop(1, stops[0][1]);
+        ctx.fillStyle = g;
+        ctx.fillRect(0,0,W,H);
+
+        // Glow blobs
+        function blob(xp, yp, r, c0, c1){
+          const x = xp*W, y = yp*H;
+          const rg = ctx.createRadialGradient(x,y, 0, x,y, r);
+          rg.addColorStop(0, c0);
+          rg.addColorStop(1, c1);
+          ctx.fillStyle = rg;
+          ctx.beginPath();
+          ctx.arc(x,y,r,0,Math.PI*2);
+          ctx.fill();
+        }
+        blob(0.18, 0.16, 520, stops[1][0], "rgba(255,255,255,0)");
+        blob(0.86, 0.22, 480, stops[1][1], "rgba(255,255,255,0)");
+        blob(0.55, 0.92, 620, stops[2][0], "rgba(255,255,255,0)");
+
+        // Bokeh
+        for(let i=0;i<24;i++){
+          const x = rand()*W;
+          const y = rand()*H*0.9;
+          const r = 12 + rand()*62;
+          const a = 0.04 + rand()*0.09;
+          const huePick = rand();
+          const col =
+            huePick < 0.33 ? `rgba(255,255,255,${a})` :
+            huePick < 0.66 ? `rgba(0,229,255,${a})` :
+            `rgba(124,92,255,${a})`;
+          ctx.fillStyle = col;
+          ctx.beginPath();
+          ctx.arc(x,y,r,0,Math.PI*2);
+          ctx.fill();
+        }
+
+        // Vignette
+        const vg = ctx.createRadialGradient(W*0.5, H*0.42, 180, W*0.5, H*0.65, 920);
+        vg.addColorStop(0, "rgba(0,0,0,0)");
+        vg.addColorStop(1, "rgba(0,0,0,.42)");
+        ctx.fillStyle = vg;
+        ctx.fillRect(0,0,W,H);
+
+        // Subtle accent wash
+        const rgb = hexToRgb(accent) || {r:124,g:92,b:255};
+        ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},.05)`;
+        ctx.fillRect(0,0,W,H);
+      }
+
+      function drawFireworks(seed, accent){
+        const rand = mulberry32(seed ^ 0xF17E);
+        const rgb = hexToRgb(accent) || {r:124,g:92,b:255};
+
+        function burst(cx, cy, R, spokes, alpha){
+          for(let i=0;i<spokes;i++){
+            const t = (i/spokes) * Math.PI*2 + rand()*0.08;
+            const len = R * (0.55 + rand()*0.55);
+            const x2 = cx + Math.cos(t)*len;
+            const y2 = cy + Math.sin(t)*len;
+            ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
+            ctx.lineWidth = 2.2;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+
+            // sparkle tip
+            ctx.fillStyle = `rgba(255,255,255,${alpha*0.85})`;
+            ctx.beginPath();
+            ctx.arc(x2, y2, 2.1 + rand()*1.2, 0, Math.PI*2);
+            ctx.fill();
+          }
+        }
+
+        ctx.save();
+        ctx.globalCompositeOperation = "screen";
+        const spots = [
+          {x: W*0.18, y: H*0.14, r: 155, s: 22},
+          {x: W*0.78, y: H*0.16, r: 170, s: 24},
+          {x: W*0.52, y: H*0.10, r: 120, s: 18}
+        ];
+        spots.forEach((p, idx) => {
+          const a = 0.11 + idx*0.03;
+          burst(p.x, p.y, p.r, p.s, a);
+          // glow
+          const g = ctx.createRadialGradient(p.x,p.y, 0, p.x,p.y, p.r*1.15);
+          g.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},${0.12})`);
+          g.addColorStop(1, "rgba(255,255,255,0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r*1.15,0,Math.PI*2);
+          ctx.fill();
+        });
+        ctx.restore();
+      }
+
+      function drawPhotoFrame(img, zoom, yOffset, accent, seed){
+        const rand = mulberry32(seed ^ 0xD00D);
+        const frameW = Math.round(W * 0.78);
+        const frameH = Math.round(H * 0.46);
+        const x = Math.round((W - frameW)/2);
+        const y = Math.round(H * 0.33 + (yOffset/100)*70);
+
+        // Shadow
+        ctx.save();
+        ctx.shadowColor = "rgba(0,0,0,.48)";
+        ctx.shadowBlur = 38;
+        ctx.shadowOffsetY = 20;
+        ctx.fillStyle = "rgba(255,255,255,.06)";
+        roundRectPath(ctx, x, y, frameW, frameH, 28);
+        ctx.fill();
+        ctx.restore();
+
+        // Glass border
+        const rgb = hexToRgb(accent) || {r:124,g:92,b:255};
+        const stroke = ctx.createLinearGradient(x, y, x+frameW, y+frameH);
+        stroke.addColorStop(0, `rgba(255,255,255,.22)`);
+        stroke.addColorStop(0.45, `rgba(${rgb.r},${rgb.g},${rgb.b},.28)`);
+        stroke.addColorStop(1, `rgba(0,229,255,.18)`);
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = stroke;
+        roundRectPath(ctx, x, y, frameW, frameH, 28);
+        ctx.stroke();
+
+        // Photo (cover)
+        if(img){
+          ctx.save();
+          roundRectPath(ctx, x+10, y+10, frameW-20, frameH-20, 22);
+          ctx.clip();
+
+          const targetW = frameW-20, targetH = frameH-20;
+          const iw = img.naturalWidth || img.width;
+          const ih = img.naturalHeight || img.height;
+
+          // cover with zoom
+          const coverScale = Math.max(targetW/iw, targetH/ih) * zoom;
+          const dw = iw * coverScale;
+          const dh = ih * coverScale;
+
+          const dx = x + 10 + (targetW - dw)/2;
+          const dy = y + 10 + (targetH - dh)/2 + (yOffset/100)*50;
+
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = "high";
+          ctx.drawImage(img, dx, dy, dw, dh);
+
+          // subtle highlight sheen
+          const sheen = ctx.createLinearGradient(x, y, x+frameW, y+frameH);
+          sheen.addColorStop(0, "rgba(255,255,255,.18)");
+          sheen.addColorStop(0.35, "rgba(255,255,255,.06)");
+          sheen.addColorStop(0.65, "rgba(255,255,255,.00)");
+          ctx.globalCompositeOperation = "screen";
+          ctx.fillStyle = sheen;
+          ctx.fillRect(x+10, y+10, frameW-20, frameH-20);
+
+          ctx.restore();
+        } else {
+          // Placeholder art
+          ctx.save();
+          roundRectPath(ctx, x+10, y+10, frameW-20, frameH-20, 22);
+          ctx.clip();
+
+          const pg = ctx.createLinearGradient(x, y, x+frameW, y+frameH);
+          pg.addColorStop(0, "rgba(124,92,255,.18)");
+          pg.addColorStop(0.5, "rgba(0,229,255,.10)");
+          pg.addColorStop(1, "rgba(46,229,157,.08)");
+          ctx.fillStyle = pg;
+          ctx.fillRect(x+10, y+10, frameW-20, frameH-20);
+
+          ctx.globalAlpha = 0.14;
+          for(let i=0;i<10;i++){
+            ctx.fillStyle = i%2 ? "white" : `rgba(${(hexToRgb(accent)||{r:124,g:92,b:255}).r},${(hexToRgb(accent)||{r:124,g:92,b:255}).g},${(hexToRgb(accent)||{r:124,g:92,b:255}).b},1)`;
+            const rx = x+20 + rand()*(frameW-60);
+            const ry = y+20 + rand()*(frameH-60);
+            const rr = 16 + rand()*46;
+            ctx.beginPath();
+            ctx.arc(rx, ry, rr, 0, Math.PI*2);
+            ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+
+          ctx.fillStyle = "rgba(234,240,255,.86)";
+          ctx.font = "600 18px Sora, system-ui, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText("Upload a photo to personalize", x + frameW/2, y + frameH/2 - 6);
+          ctx.fillStyle = "rgba(185,196,238,.82)";
+          ctx.font = "500 13px Sora, system-ui, sans-serif";
+          ctx.fillText("PNG export stays crisp", x + frameW/2, y + frameH/2 + 18);
+
+          ctx.restore();
+        }
+
+        // tiny corner confetti
+        ctx.save();
+        ctx.globalCompositeOperation = "screen";
+        for(let i=0;i<32;i++){
+          const px = x + frameW*(rand()*0.18);
+          const py = y + frameH*(rand()*0.22);
+          const s = 2 + rand()*5;
+          ctx.fillStyle = `rgba(255,255,255,${0.08 + rand()*0.12})`;
+          ctx.fillRect(px, py, s, s);
+        }
+        ctx.restore();
+      }
+
+      function drawTypography(greeting, name, message, template, accent){
+        const rgb = hexToRgb(accent) || {r:124,g:92,b:255};
+
+        // Top label
+        ctx.save();
+        ctx.textAlign = "center";
+        ctx.fillStyle = "rgba(234,240,255,.90)";
+        ctx.font = "700 34px Sora, system-ui, sans-serif";
+        ctx.fillText((greeting || "Happy New Year").trim(), W/2, 120);
+
+        // Accent underline glow
+        const ulw = Math.min(520, Math.max(300, (greeting||"Happy New Year").length * 16));
+        const gx = W/2 - ulw/2;
+        const gy = 142;
+        const gg = ctx.createLinearGradient(gx, gy, gx+ulw, gy);
+        if(template === "champagne"){
+          gg.addColorStop(0, "rgba(255,202,106,.0)");
+          gg.addColorStop(0.25, "rgba(255,202,106,.75)");
+          gg.addColorStop(0.75, "rgba(255,165,210,.55)");
+          gg.addColorStop(1, "rgba(255,202,106,.0)");
+        } else {
+          gg.addColorStop(0, "rgba(0,229,255,.0)");
+          gg.addColorStop(0.25, "rgba(0,229,255,.70)");
+          gg.addColorStop(0.75, `rgba(${rgb.r},${rgb.g},${rgb.b},.62)`);
+          gg.addColorStop(1, "rgba(0,229,255,.0)");
+        }
+        ctx.fillStyle = gg;
+        ctx.globalAlpha = 0.95;
+        roundRectPath(ctx, gx, gy, ulw, 6, 99);
+        ctx.fill();
+        ctx.restore();
+
+        // Big year
+        ctx.save();
+        ctx.textAlign = "center";
+        ctx.font = "800 170px Fraunces, ui-serif, serif";
+        ctx.globalCompositeOperation = "screen";
+        const yearGrad = ctx.createLinearGradient(W*0.25, H*0.18, W*0.75, H*0.40);
+        if(template === "champagne"){
+          yearGrad.addColorStop(0, "rgba(255,202,106,.95)");
+          yearGrad.addColorStop(0.55, "rgba(255,255,255,.80)");
+          yearGrad.addColorStop(1, "rgba(255,110,199,.55)");
+        } else if(template === "aurora"){
+          yearGrad.addColorStop(0, "rgba(0,229,255,.88)");
+          yearGrad.addColorStop(0.5, "rgba(255,255,255,.70)");
+          yearGrad.addColorStop(1, `rgba(${rgb.r},${rgb.g},${rgb.b},.62)`);
+        } else {
+          yearGrad.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},.86)`);
+          yearGrad.addColorStop(0.55, "rgba(255,255,255,.70)");
+          yearGrad.addColorStop(1, "rgba(0,229,255,.50)");
+        }
+        ctx.fillStyle = yearGrad;
+
+        // glow behind year
+        const glow = ctx.createRadialGradient(W/2, 240, 10, W/2, 260, 460);
+        glow.addColorStop(0, "rgba(255,255,255,.14)");
+        glow.addColorStop(0.35, "rgba(124,92,255,.10)");
+        glow.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(W/2, 270, 420, 0, Math.PI*2);
+        ctx.fill();
+
+        ctx.fillStyle = yearGrad;
+        ctx.shadowColor = "rgba(0,0,0,.40)";
+        ctx.shadowBlur = 30;
+        ctx.shadowOffsetY = 16;
+        ctx.fillText("2026", W/2, 310);
+        ctx.restore();
+
+        // Bottom caption
+        ctx.save();
+        ctx.textAlign = "center";
+        const toLine = (name || "").trim() ? `To ${name.trim()}` : "To you";
+        ctx.fillStyle = "rgba(234,240,255,.94)";
+        ctx.font = "700 26px Sora, system-ui, sans-serif";
+        ctx.fillText(toLine, W/2, 1040);
+
+        ctx.fillStyle = "rgba(185,196,238,.90)";
+        ctx.font = "500 20px Sora, system-ui, sans-serif";
+
+        const msg = (message || "").trim();
+        const lines = wrapText(msg || "Wishing you a bright start, bold dreams, and a year full of wins.", 52);
+        const startY = 1082;
+        const lh = 30;
+        lines.slice(0,4).forEach((ln, i) => {
+          ctx.fillText(ln, W/2, startY + i*lh);
+        });
+
+        // Signature row
+        ctx.fillStyle = "rgba(234,240,255,.78)";
+        ctx.font = "600 14px Sora, system-ui, sans-serif";
+        ctx.fillText("Made with love • New Year 2026", W/2, 1270);
+
+        // Divider glow
+        ctx.globalCompositeOperation = "screen";
+        const dg = ctx.createLinearGradient(W*0.28, 1010, W*0.72, 1010);
+        dg.addColorStop(0, "rgba(255,255,255,0)");
+        dg.addColorStop(0.25, "rgba(255,255,255,.18)");
+        dg.addColorStop(0.5, "rgba(0,229,255,.12)");
+        dg.addColorStop(0.75, "rgba(255,255,255,.14)");
+        dg.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = dg;
+        roundRectPath(ctx, W*0.28, 1008, W*0.44, 2.5, 99);
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      function wrapText(text, maxChars){
+        const t = (text || "").replace(/\s+/g, " ").trim();
+        if(!t) return [""];
+        const words = t.split(" ");
+        const lines = [];
+        let line = "";
+        for(const w of words){
+          const test = line ? (line + " " + w) : w;
+          if(test.length <= maxChars){
+            line = test;
+          } else {
+            lines.push(line);
+            line = w;
+          }
+        }
+        if(line) lines.push(line);
+        return lines;
+      }
+
+      function render(){
+        // normalize accent
+        state.accent = niceHexOrFallback(state.accent, "#7C5CFF");
+        accentInput.value = state.accent;
+
+        // clear
+        ctx.clearRect(0,0,W,H);
+
+        drawBackground(state.template, state.accent, state.seed);
+        drawFireworks(state.seed, state.accent);
+        drawPhotoFrame(state.img, state.zoom, state.y, state.accent, state.seed);
+        drawTypography(state.greeting, state.name, state.message, state.template, state.accent);
+
+        // subtle bottom fade for polish
+        ctx.save();
+        const f = ctx.createLinearGradient(0, H*0.62, 0, H);
+        f.addColorStop(0, "rgba(0,0,0,0)");
+        f.addColorStop(1, "rgba(0,0,0,.22)");
+        ctx.fillStyle = f;
+        ctx.fillRect(0,0,W,H);
+        ctx.restore();
+      }
+
+      function updateUI(){
+        templateSelect.value = state.template;
+        greetingInput.value = state.greeting;
+        nameInput.value = state.name;
+        messageInput.value = state.message;
+        zoomRange.value = state.zoom;
+        posRange.value = state.y;
+        zoomVal.textContent = state.zoom.toFixed(2) + "×";
+        posVal.textContent = (state.y > 0 ? "+" : "") + state.y + "%";
+      }
+
+      function loadImageFromFile(file){
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          const url = URL.createObjectURL(file);
+          img.src = url;
+          img._revoke = () => URL.revokeObjectURL(url);
+        });
+      }
+
+      // Events
+      photoInput.addEventListener("change", async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if(!file) return;
+        try{
+          photoName.textContent = file.name;
+          if(state.img && state.img._revoke) state.img._revoke();
+          const img = await loadImageFromFile(file);
+          state.img = img;
+          toastShow("Photo", "Uploaded and applied.");
+          render();
+        } catch {
+          toastShow("Oops", "Couldn’t load that image.");
+        }
+      });
+
+      templateSelect.addEventListener("change", () => {
+        state.template = templateSelect.value;
+        render();
+      });
+
+      accentInput.addEventListener("input", () => {
+        state.accent = accentInput.value || "#7C5CFF";
+        render();
+      });
+
+      greetingInput.addEventListener("input", () => {
+        state.greeting = greetingInput.value;
+        render();
+      });
+
+      nameInput.addEventListener("input", () => {
+        state.name = nameInput.value;
+        render();
+      });
+
+      messageInput.addEventListener("input", () => {
+        state.message = messageInput.value;
+        render();
+      });
+
+      zoomRange.addEventListener("input", () => {
+        state.zoom = parseFloat(zoomRange.value);
+        zoomVal.textContent = state.zoom.toFixed(2) + "×";
+        render();
+      });
+
+      posRange.addEventListener("input", () => {
+        state.y = parseInt(posRange.value, 10);
+        posVal.textContent = (state.y > 0 ? "+" : "") + state.y + "%";
+        render();
+      });
+
+      randomizeBtn.addEventListener("click", () => {
+        state.seed = Math.floor(Math.random() * 1e9);
+        setSparkles(state.seed);
+        render();
+        toastShow("Sparkle", "Refreshed.");
+      });
+
+      resetBtn.addEventListener("click", () => {
+        state.template = "midnight";
+        state.accent = "#7C5CFF";
+        state.greeting = "Happy New Year";
+        state.name = "Alex";
+        state.message = "Wishing you a bright start, bold dreams, and a year full of wins.";
+        state.zoom = 1.05;
+        state.y = 0;
+        state.seed = Math.floor(Math.random() * 1e9);
+        updateUI();
+        setSparkles(state.seed);
+        render();
+        toastShow("Reset", "Back to defaults.");
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        const text = `${(state.greeting||"Happy New Year").trim()} 2026\n${(state.name||"").trim() ? ("To " + state.name.trim() + "\n") : ""}${(state.message||"").trim()}`;
+        try{
+          await navigator.clipboard.writeText(text.trim());
+          toastShow("Copied", "Message copied.");
+        } catch {
+          toastShow("Info", "Clipboard not available here.");
+        }
+      });
+
+      downloadBtn.addEventListener("click", () => {
+        try{
+          const a = document.createElement("a");
+          const safeName = ((state.name || "photocard").trim() || "photocard").replace(/[^\w\-]+/g, "_");
+          a.download = `Happy_New_Year_2026_${safeName}.png`;
+          a.href = canvas.toDataURL("image/png");
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          toastShow("Saved", "PNG downloaded.");
+        } catch {
+          toastShow("Oops", "Download failed.");
+        }
+      });
+
+      // Init
+      accentInput.value = state.accent;
+      updateUI();
+      setSparkles(state.seed);
+      render();
+    })();
+  </script>
+</body>
+</html>
