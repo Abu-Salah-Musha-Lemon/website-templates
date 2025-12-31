@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 New Year Photocard Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffd700;
+            --secondary: #c0c0c0;
+            --accent: #ff3e00;
+            --bg: #050505;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .inner-card {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .inner-card.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glow-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .glow-button:hover::after {
+            opacity: 1;
+        }
+
+        .photo-upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .photo-upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        input, textarea {
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: white !important;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+
+    <div id="canvas-container"></div>
+
+    <header class="w-full max-w-6xl flex justify-between items-center mb-8 z-10">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-gradient-to-tr from-yellow-500 to-amber-200 rounded-full blur-sm animate-pulse"></div>
+            <span class="text-xl font-bold tracking-tighter uppercase">Nexus 2026</span>
+        </div>
+        <div class="hidden md:block text-sm opacity-50 uppercase tracking-[0.2em]">New Year Designer Edition</div>
+    </header>
+
+    <main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+        
+        <!-- Left Column: Controls -->
+        <div class="space-y-8 order-2 lg:order-1">
+            <div class="space-y-2">
+                <h1 class="text-4xl md:text-6xl font-black leading-none">CREATE YOUR <br><span class="gold-gradient italic font-display">2026 VISION</span></h1>
+                <p class="text-gray-400 max-w-md">Design a personalized photocard for the new era. Share your energy, your style, and your dreams for 2026.</p>
+            </div>
+
+            <div class="space-y-6 glass-card p-6 rounded-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">To</label>
+                        <input type="text" id="input-to" placeholder="Recipient Name" class="w-full px-4 py-3 rounded-xl" maxlength="20">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">From</label>
+                        <input type="text" id="input-from" placeholder="Your Name" class="w-full px-4 py-3 rounded-xl" maxlength="20">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">Your Message</label>
+                    <textarea id="input-msg" placeholder="May 2026 be your most vibrant year yet..." class="w-full px-4 py-3 rounded-xl h-24 resize-none" maxlength="120"></textarea>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs uppercase tracking-widest text-gray-500 font-bold">New Year Frame</label>
+                    <div class="flex gap-3">
+                        <button onclick="setTheme('gold')" class="w-8 h-8 rounded-full bg-yellow-500 ring-2 ring-white ring-offset-2 ring-offset-black"></button>
+                        <button onclick="setTheme('silver')" class="w-8 h-8 rounded-full bg-slate-400"></button>
+                        <button onclick="setTheme('neon')" class="w-8 h-8 rounded-full bg-purple-600"></button>
+                        <button onclick="setTheme('crimson')" class="w-8 h-8 rounded-full bg-red-600"></button>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 pt-4">
+                    <button id="flip-btn" class="flex-1 bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition active:scale-95">
+                        FLIP CARD
+                    </button>
+                    <button id="capture-btn" class="flex-1 border border-white/20 hover:bg-white/10 font-bold py-4 rounded-xl transition active:scale-95">
+                        DOWNLOAD
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: The Card -->
+        <div class="flex justify-center items-center order-1 lg:order-2">
+            <div class="card-container w-full max-w-[360px] aspect-[3/4]">
+                <div id="photocard" class="inner-card relative w-full h-full shadow-2xl cursor-pointer">
+                    
+                    <!-- Front of Card -->
+                    <div class="card-front glass-card rounded-3xl p-6 overflow-hidden flex flex-col justify-between border-4" id="theme-border">
+                        <div class="flex justify-between items-start">
+                            <div class="text-3xl font-black italic tracking-tighter" id="year-text">2026</div>
+                            <div class="text-[10px] uppercase tracking-[0.3em] opacity-50 vertical-rl">Official Archive</div>
+                        </div>
+
+                        <div class="relative flex-1 my-6 rounded-2xl overflow-hidden bg-zinc-900 group">
+                            <div id="drop-zone" class="photo-upload-area absolute inset-0 flex flex-col items-center justify-center cursor-pointer z-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-[10px] uppercase tracking-widest font-bold">Insert Photo</span>
+                                <input type="file" id="file-input" class="hidden" accept="image/*">
+                            </div>
+                            <img id="preview-img" src="" class="absolute inset-0 w-full h-full object-cover hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="text-xs uppercase tracking-[0.2em] opacity-50">Happy New Year</div>
+                            <div id="display-to" class="text-2xl font-bold font-display italic">To Someone Special</div>
+                        </div>
+
+                        <!-- Card Decorative Elements -->
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-yellow-500/20 blur-3xl rounded-full"></div>
+                    </div>
+
+                    <!-- Back of Card -->
+                    <div class="card-back glass-card rounded-3xl p-8 overflow-hidden flex flex-col justify-between border-4 border-white/10">
+                        <div class="flex justify-center">
+                            <div class="w-12 h-1 bg-white/20 rounded-full"></div>
+                        </div>
+
+                        <div class="flex-1 flex flex-col justify-center items-center text-center space-y-6">
+                            <div class="w-16 h-16 border border-white/20 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">✨</span>
+                            </div>
+                            <p id="display-msg" class="text-lg leading-relaxed font-light italic text-gray-300">
+                                May the journey of 2026 be filled with boundless discovery and luminous moments of joy.
+                            </p>
+                            <div class="w-8 h-[1px] bg-yellow-500/50"></div>
+                            <div>
+                                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">With Love,</div>
+                                <div id="display-from" class="text-xl font-bold tracking-tight">Your Name</div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-end opacity-30">
+                            <div class="text-[8px] uppercase tracking-[0.4em]">Jan 01 2026</div>
+                            <div class="w-8 h-8 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                                <div class="w-4 h-4 bg-white/20 rotate-45"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full max-w-6xl mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest text-gray-600 z-10">
+        <p>© 2026 FUTURE DESIGN LABS</p>
+        <div class="flex gap-8">
+            <a href="#" class="hover:text-white transition">INSTAGRAM</a>
+            <a href="#" class="hover:text-white transition">TWITTER</a>
+            <a href="#" class="hover:text-white transition">OPENSEA</a>
+        </div>
+    </footer>
+
+    <script>
+        // --- Three.js Background Animation ---
+        const setupBackground = () => {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Particles
+            const particlesCount = 1500;
+            const posArray = new Float32Array(particlesCount * 3);
+            const colorArray = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10;
+                colorArray[i] = Math.random();
+            }
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.005,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // Floating Light Orbs
+            const orbGeometry = new THREE.SphereGeometry(1, 32, 32);
+            const orbMaterial = new THREE.MeshBasicMaterial({ color: 0xffd700, transparent: true, opacity: 0.05 });
+            const orb = new THREE.Mesh(orbGeometry, orbMaterial);
+            orb.position.set(2, 1, -2);
+            scene.add(orb);
+
+            camera.position.z = 3;
+
+            // Animation
+            const animate = () => {
+                requestAnimationFrame(animate);
+                particlesMesh.rotation.y += 0.0005;
+                particlesMesh.rotation.x += 0.0002;
+                orb.position.x = Math.sin(Date.now() * 0.0005) * 2;
+                orb.position.y = Math.cos(Date.now() * 0.0005) * 1;
+                renderer.render(scene, camera);
+            };
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            animate();
+        };
+
+        // --- Card Logic ---
+        const photocard = document.getElementById('photocard');
+        const flipBtn = document.getElementById('flip-btn');
+        const inputTo = document.getElementById('input-to');
+        const inputFrom = document.getElementById('input-from');
+        const inputMsg = document.getElementById('input-msg');
+        const displayTo = document.getElementById('display-to');
+        const displayFrom = document.getElementById('display-from');
+        const displayMsg = document.getElementById('display-msg');
+        const fileInput = document.getElementById('file-input');
+        const dropZone = document.getElementById('drop-zone');
+        const previewImg = document.getElementById('preview-img');
+        const themeBorder = document.getElementById('theme-border');
+        const yearText = document.getElementById('year-text');
+
+        // Flip mechanism
+        flipBtn.addEventListener('click', () => {
+            photocard.classList.toggle('is-flipped');
+        });
+
+        photocard.addEventListener('click', (e) => {
+            if (e.target.closest('#drop-zone')) return;
+            photocard.classList.toggle('is-flipped');
+        });
+
+        // Live Preview Updates
+        inputTo.addEventListener('input', (e) => {
+            displayTo.innerText = e.target.value || "Someone Special";
+        });
+
+        inputFrom.addEventListener('input', (e) => {
+            displayFrom.innerText = e.target.value || "Your Name";
+        });
+
+        inputMsg.addEventListener('input', (e) => {
+            displayMsg.innerText = e.target.value || "May the journey of 2026 be filled with boundless discovery and luminous moments of joy.";
+        });
+
+        // Photo Upload
+        dropZone.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    previewImg.classList.remove('hidden');
+                    dropZone.style.opacity = '0';
+                    dropZone.classList.add('group-hover:opacity-100');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Drag and Drop
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-yellow-500');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-yellow-500');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    previewImg.classList.remove('hidden');
+                    dropZone.style.opacity = '0';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Theme Switcher
+        window.setTheme = (theme) => {
+            yearText.className = "text-3xl font-black italic tracking-tighter";
+            themeBorder.className = "card-front glass-card rounded-3xl p-6 overflow-hidden flex flex-col justify-between border-4";
+            
+            switch(theme) {
+                case 'gold':
+                    themeBorder.classList.add('border-yellow-500/50');
+                    yearText.classList.add('gold-gradient');
+                    break;
+                case 'silver':
+                    themeBorder.classList.add('border-slate-400/50');
+                    yearText.classList.add('text-slate-300');
+                    break;
+                case 'neon':
+                    themeBorder.classList.add('border-purple-600/50');
+                    yearText.classList.add('text-purple-400', 'drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]');
+                    break;
+                case 'crimson':
+                    themeBorder.classList.add('border-red-600/50');
+                    yearText.classList.add('text-red-500');
+                    break;
+            }
+        };
+
+        // Tilt Effect
+        const handleTilt = (e) => {
+            if (photocard.classList.contains('is-flipped')) return;
+            
+            const rect = photocard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            gsap.to(photocard, {
+                rotateX: rotateX,
+                rotateY: rotateY,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        };
+
+        const resetTilt = () => {
+            if (photocard.classList.contains('is-flipped')) return;
+            gsap.to(photocard, {
+                rotateX: 0,
+                rotateY: 0,
+                duration: 1,
+                ease: "elastic.out(1, 0.3)"
+            });
+        };
+
+        photocard.addEventListener('mousemove', handleTilt);
+        photocard.addEventListener('mouseleave', resetTilt);
+
+        // Download Interaction
+        document.getElementById('capture-btn').addEventListener('click', () => {
+            const btn = document.getElementById('capture-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "PREPARING...";
+            btn.disabled = true;
+
+            // Simulate capture flash
+            const flash = document.createElement('div');
+            flash.className = 'fixed inset-0 bg-white z-[100] pointer-events-none opacity-0';
+            document.body.appendChild(flash);
+            
+            gsap.to(flash, {
+                opacity: 1, 
+                duration: 0.1, 
+                onComplete: () => {
+                    gsap.to(flash, { opacity: 0, duration: 0.5 });
+                }
+            });
+
+            setTimeout(() => {
+                btn.innerText = "SAVED TO GALLERY";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+
+        // Init
+        setupBackground();
+        setTheme('gold');
+    </script>
+</body>
+</html></html>
