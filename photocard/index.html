@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 New Year Photocard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #f8e8ff 0%, #f3f0f9 35%, #0b1b3a 80%);
+      min-height: 100vh;
+      color: #f4f5ff;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 50%),
+                  radial-gradient(circle at 80% 0%, rgba(255,200,120,0.12), transparent 45%),
+                  radial-gradient(circle at 60% 80%, rgba(130,202,255,0.15), transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+    .photocard {
+      width: min(900px, 100%);
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(10, 15, 40, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 32px;
+      box-shadow:
+        0 35px 60px rgba(5, 6, 25, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .photocard::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 133, 172, 0.1), transparent);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .photo-preview {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 40px rgba(9, 14, 35, 0.6);
+      position: relative;
+    }
+    .photo-preview img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05);
+    }
+    .photo-frame {
+      position: absolute;
+      inset: 1.5rem;
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      pointer-events: none;
+    }
+    .glow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(255, 111, 203, 0.45);
+      font-size: 0.9rem;
+    }
+    .wish-section {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(8, 12, 34, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .wish-section::after {
+      content: '';
+      position: absolute;
+      inset: -5rem 30% 0 -30%;
+      height: 12rem;
+      background: radial-gradient(circle, rgba(255,215,200,0.3), transparent 70%);
+      filter: blur(40px);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .wish-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 18px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 1rem;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+    .wish-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .wish-card strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #ff9ff3;
+    }
+    .messages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .message-pill {
+      padding: 0.65rem 1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .message-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .animated-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 0.35rem;
+      background: linear-gradient(135deg, #ffe1ff, #ffd1a4);
+      animation: bounce 1s ease infinite alternate;
+    }
+    .animated-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .animated-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      to {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+    }
+    .confetti-piece {
+      position:absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      opacity: 0;
+      pointer-events: none;
+      animation: confetti-fall 2.5s linear forwards;
+    }
+    @keyframes confetti-fall {
+      0% {transform: translate(var(--x-start, 0), 0) scale(0.9); opacity: 0;}
+      20% {opacity: 1;}
+      100% {transform: translate(calc(var(--x-start, 0) - 30px), 300px) rotate(360deg); opacity: 0;}
+    }
+    @media (max-width: 640px) {
+      .photocard {
+        padding: 1.5rem;
+        margin: 2rem 1rem;
+      }
+      .wish-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="confettiContainer"></div>
+  <main class="photocard">
+    <div class="flex flex-col gap-6 relative z-10">
+      <header class="flex flex-wrap gap-4 items-center justify-between">
+        <div>
+          <p class="text-sm uppercase tracking-[0.4em] text-slate-300">Limited Edition</p>
+          <h1 class="text-4xl md:text-5xl font-[700] leading-tight font-[Playfair Display], serif;">2026 New Year Photocard</h1>
+        </div>
+        <div class="glow-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2.3v5.9m0 12.4v-5.9m9.1-4.5h-5.9m-12.4 0h5.9m7.9-5a7 7 0 0 0-5.9 0m-5.9 0a7 7 0 0 0 5.9 0m5.9 15a7 7 0 0 0-5.9 0m-5.9 0a7 7 0 0 0 5.9 0" stroke="#ffda82" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Welcome 2026
+        </div>
+      </header>
+      <p class="text-lg text-slate-200 max-w-2xl leading-relaxed">
+        Capture the warmth of the new year with a shimmering photocard inspired by stardust, cozy lanternlight, and the promise of fresh beginnings. Every gradient glow and subtle sparkle is crafted for a memorable keepsake.
+      </p>
+      <section class="photo-preview">
+        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80" alt="New Year portrait">
+        <div class="photo-frame"></div>
+      </section>
+      <div class="wish-section">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <p class="text-sm uppercase tracking-[0.3em] text-slate-300">Yearly Message</p>
+            <h2 class="text-3xl font-semibold mt-2 text-white">Your personalized wish</h2>
+          </div>
+          <button id="revealBtn" class="px-6 py-3 bg-gradient-to-r from-fuchsia-500 to-amber-400 text-slate-900 font-semibold rounded-2xl shadow-lg shadow-fuchsia-500/40 transition-transform hover:scale-105">Reveal Surprise</button>
+        </div>
+        <p id="wishMessage" class="text-xl text-slate-100 mt-6 leading-relaxed opacity-0 transition-opacity duration-700">
+          May 2026 bring you boundless wonder, gentle adventures, and golden moments with the ones you love. Keep shining brighter than ever.
+        </p>
+        <div class="messages-grid" id="moodGrid">
+          <div class="message-pill" data-message="Spark every sunrise with stardust optimism.">Starlit Mood</div>
+          <div class="message-pill" data-message="Savor the calm between fireworks, breathe deeply.">Calm Glow</div>
+          <div class="message-pill" data-message="Bold choices, warm hearts, infinite playlists." >Bold Beats</div>
+          <div class="message-pill" data-message="Share laughter, champagne, and secret jokes." >Luminous Laughs</div>
+        </div>
+        <p id="moodText" class="mt-4 text-slate-300 leading-relaxed flex items-center gap-3">
+          <span class="animated-dots">
+            <span></span><span></span><span></span>
+          </span>
+          Tap a mood to unlock a tiny wish.
+        </p>
+      </div>
+      <div class="text-sm text-slate-300/80 text-right">
+        <span>Crafted with love • </span>
+        <span>2026 Digital Keepsake</span>
+      </div>
+    </div>
+  </main>
+  <script>
+    const revealBtn = document.getElementById('revealBtn');
+    const wishMessage = document.getElementById('wishMessage');
+    let revealed = false;
+    revealBtn.addEventListener('click', () => {
+      revealed = !revealed;
+      wishMessage.textContent = revealed
+        ? 'May 2026 bring you boundless wonder, gentle adventures, and golden moments with the ones you love. Keep shining brighter than ever.'
+        : 'Every sunrise is a new palette—paint it with courage, kindness, and glittering dreams.';
+      wishMessage.style.opacity = revealed ? '1' : '0.7';
+      revealBtn.textContent = revealed ? 'Share the Glow' : 'Reveal Surprise';
+      triggerConfetti();
+    });
+
+    const moodGrid = document.getElementById('moodGrid');
+    const moodText = document.getElementById('moodText');
+    moodGrid.addEventListener('click', (event) => {
+      const pill = event.target.closest('.message-pill');
+      if (!pill) return;
+      const message = pill.getAttribute('data-message');
+      moodText.innerHTML = `<span class="text-amber-200 font-semibold">${message}</span>`;
+      pill.classList.add('selected');
+      setTimeout(() => pill.classList.remove('selected'), 800);
+      animatePulse(pill);
+    });
+
+    function animatePulse(el) {
+      el.animate([
+        { transform: 'scale(1)', boxShadow: '0 0 0 rgba(255,255,255,0)' },
+        { transform: 'scale(1.05)', boxShadow: '0 0 20px rgba(255,255,255,0.4)' },
+        { transform: 'scale(1)', boxShadow: '0 0 0 rgba(255,255,255,0)' }
+      ], { duration: 500, easing: 'ease-out' });
+    }
+
+    const confettiContainer = document.getElementById('confettiContainer');
+    function triggerConfetti() {
+      for (let i = 0; i < 25; i++) {
+        const piece = document.createElement('span');
+        piece.classList.add('confetti-piece');
+        piece.style.setProperty('--x-start', `${Math.random() * 200 - 100}px`);
+        piece.style.left = `${Math.random() * window.innerWidth}px`;
+        piece.style.top = `${-Math.random() * 60}px`;
+        piece.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+        confettiContainer.appendChild(piece);
+        setTimeout(() => piece.remove(), 2600);
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      const pieces = document.querySelectorAll('.confetti-piece');
+      pieces.forEach(piece => piece.remove());
+    });
+  </script>
+</body>
+</html>

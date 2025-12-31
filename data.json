@@ -83,5 +83,10 @@
     "ProjectName": "Responsive Media Slider with Grid Areas",
     "Technology": "HTML, CSS, JS",
     "imgLink": "./slide/index.html"
+  },
+    {
+    "ProjectName": "Responsive Photo card",
+    "Technology": "HTML, CSS, JS",
+    "imgLink": "./photocard/index.html"
   }
 ]
