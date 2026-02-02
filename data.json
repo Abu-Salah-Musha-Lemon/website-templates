@@ -98,5 +98,11 @@
     "ProjectName": "Responsive Photo card 3",
     "Technology": "HTML, CSS, JS",
     "imgLink": "./photocard/index3.html"
+  },
+   {
+    "ProjectName": "Caroucel",
+    "Technology": "HTML, CSS, JS",
+    "imgLink": "./slider/caroucel.html"
   }
+  
 ]
