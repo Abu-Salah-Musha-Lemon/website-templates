@@ -103,6 +103,16 @@
     "ProjectName": "Caroucel",
     "Technology": "HTML, CSS, JS",
     "imgLink": "./slide/caroucel.html"
+  },
+  {
+    "ProjectName": "OnePageDesign",
+    "Technology": "HTML, CSS, JS",
+    "imgLink": "./OnePageDesign/index.html"
+  },
+    {
+    "ProjectName": "WebDesignUsedBootstrap",
+    "Technology": "HTML, CSS, JS",
+    "imgLink": "./WebDesignUsedBootstrap/index.html"
   }
   
 ]

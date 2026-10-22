@@ -1,0 +1,819 @@
+
+/* ==================================
+   GLOBAL STYLES
+================================== */
+
+:root {
+  --orange: #ff7468;
+  --orange-dark: #ed5d52;
+  --text: #252525;
+  --muted: #777;
+  --light-bg: #f8f8ff;
+  --white: #fff;
+  --border: #e8e8e8;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.35;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+.container-fluid {
+  min-width: 0;
+}
+
+/* ==================================
+   NAVIGATION
+================================== */
+
+.navbar {
+  padding: 18px 0;
+}
+
+.navbar .container {
+  width: 100%;
+}
+
+.navbar-brand {
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+
+.navbar-nav {
+  gap: 12px;
+}
+
+.navbar .nav-link {
+  color: #333;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--orange);
+}
+
+.navbar .login {
+  display: inline-block;
+  margin-right: 18px;
+  color: var(--text);
+}
+
+.navbar .action-button {
+  background: var(--orange);
+  color: var(--white);
+  border: 1px solid var(--orange);
+  padding: 10px 22px;
+  transition: background 0.2s ease;
+}
+
+.navbar .action-button:hover {
+  background: var(--orange-dark);
+  color: var(--white);
+}
+
+/* ==================================
+   HERO
+================================== */
+
+.getStart {
+  width: 150px;
+  height: 150px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: normal;
+  border: 2px solid var(--orange) !important;
+  background: var(--orange);
+  color: var(--white);
+  font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.getStart:hover {
+  background: var(--orange-dark);
+  color: var(--white);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* Hero course card */
+
+#hover {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+#hover:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card {
+  min-width: 0;
+  overflow: hidden;
+  border-color: var(--border);
+  border-radius: 12px;
+}
+
+.card img {
+  max-width: 100%;
+}
+
+.cardButton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 16px 20px;
+}
+
+.cardbutton {
+  flex: 1 1 100px;
+}
+
+.cardButton .btn-danger,
+.btn-danger {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.cardButton .btn-danger:hover,
+.btn-danger:hover {
+  background: var(--orange-dark);
+  border-color: var(--orange-dark);
+}
+
+/* ==================================
+   COLORS AND BUTTONS
+================================== */
+
+.orange {
+  color: var(--orange) !important;
+}
+
+.orangeBg {
+  background-color: var(--orange) !important;
+  color: var(--white);
+}
+
+.orangeBg:hover {
+  background-color: var(--orange-dark) !important;
+  color: var(--white);
+}
+
+.btn-primary {
+  background-color: var(--orange);
+  border-color: var(--orange);
+}
+
+.btn-primary:hover {
+  background-color: var(--orange-dark);
+  border-color: var(--orange-dark);
+}
+
+.text-muted {
+  color: var(--muted) !important;
+}
+
+/* ==================================
+   SECTION 1 - BENEFITS
+================================== */
+
+.sectoion-1 {
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.sectoion-1 > .card {
+  height: 100%;
+}
+
+.sectoion-1 .card-body {
+  padding: 24px;
+}
+
+.sectoion-1 .card-title {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.sectoion-1 .card-text {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.sectoion-1 .image {
+  flex: 0 0 35%;
+  min-width: 0;
+}
+
+.sectoion-1 .image img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ==================================
+   SECTION 2 - MEMBERSHIP
+================================== */
+
+.section-2 {
+  padding: 100px 0;
+}
+
+.section-2 .row {
+  align-items: center;
+}
+
+.section-2 .col-md-6 {
+  min-width: 0;
+}
+
+.section-2 .card-1,
+.section-2 .card-2 {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.section-2 .card {
+  margin-bottom: 18px !important;
+  height: auto;
+}
+
+.section-2 .card-body {
+  min-width: 0;
+}
+
+.section-2 .card-body img {
+  width: 40%;
+  max-height: 140px;
+  object-fit: cover;
+}
+
+.section-2 .members {
+  margin-left: 35px !important;
+}
+
+.section-2 .members h2 {
+  margin-bottom: 18px;
+}
+
+.section-2 .members p {
+  font-size: 20px !important;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ==================================
+   SECTION 3 - CATEGORIES
+================================== */
+
+.section-4 {
+  padding-top: 25px;
+  padding-bottom: 65px;
+}
+
+.section-4 .row {
+  margin-inline: 0;
+}
+
+.section-4 .category-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.section-4 .card {
+  width: auto;
+  min-width: 0;
+  margin: 0 !important;
+  flex: 1 1 0;
+}
+
+.section-4 .card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.section-4 .card-body {
+  padding: 18px;
+}
+
+.section-4 .card-title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* ==================================
+   POPULAR COURSES
+================================== */
+
+.section-4-1,
+.section-4\.1 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.section-4\.1 > .card {
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.section-4\.1 > .card > img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.section-4\.1 .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section-4\.1 .card-text {
+  font-size: 15px;
+}
+
+.section-4\.1 .card-text.orange {
+  font-size: 21px;
+}
+
+.section-4\.1 .card-body .btn {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* ==================================
+   TEACHERS
+================================== */
+
+.team-boxed {
+  width: 100%;
+}
+
+.team-boxed .bg {
+  max-width: 100%;
+}
+
+.team-boxed .row {
+  margin-bottom: 15px;
+}
+
+.team-boxed .col {
+  min-width: 0;
+}
+
+.team-boxed .card {
+  width: 100%;
+  max-width: none !important;
+  height: 100%;
+  margin: 0;
+  padding: 20px !important;
+}
+
+.team-boxed .Aron-fince {
+  align-items: center;
+}
+
+.team-boxed .Aron-fince img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.team-boxed .card-body {
+  padding: 15px;
+}
+
+.team-boxed .card-text {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ==================================
+   TESTIMONIALS
+================================== */
+
+#bac-memb {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+#h5-member {
+  color: var(--orange);
+}
+
+#arrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+#arrow > div {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#arrow > div:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.section-7 {
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.section-7 > .card {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 12px;
+}
+
+.section-7 .card-body {
+  padding: 28px 20px;
+}
+
+.section-7 .card-text {
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.section-7 .rounded-circle {
+  width: 125px !important;
+  height: 125px !important;
+  object-fit: cover;
+}
+
+/* ==================================
+   APPLICATION FORM
+================================== */
+
+.Apply-now {
+  width: 100%;
+}
+
+.Apply-now input {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 5px;
+}
+
+.Apply-now input:focus {
+  border-color: var(--orange);
+}
+
+.Apply-now button {
+  min-width: 140px;
+  padding: 12px 24px;
+}
+
+.border-bottom-primary {
+  border-bottom: 2px solid var(--orange) !important;
+}
+
+/* ==================================
+   FOOTER
+================================== */
+
+.p-top-2 {
+  row-gap: 30px;
+}
+
+.p-top-2 > div {
+  min-width: 0;
+}
+
+.p-top-2 h3,
+.p-top-2 h5 {
+  margin-bottom: 18px;
+}
+
+.p-top-2 ul a {
+  color: #555;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.p-top-2 ul a:hover {
+  color: var(--orange);
+}
+
+.p-top-2 address {
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.input-group .form-control {
+  min-width: 0;
+}
+
+.input-group .input-group-text {
+  border: none;
+  color: var(--white);
+}
+
+/* ==================================
+   TABLET RESPONSIVENESS
+================================== */
+
+@media (max-width: 991.98px) {
+  .getStart {
+    width: 120px;
+    height: 120px;
+  }
+
+  .section-2 {
+    padding: 70px 0 !important;
+  }
+
+  .section-2 .members {
+    margin-left: 0 !important;
+  }
+
+  .section-4 .category-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-4\.1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-7 .card-body {
+    padding: 20px 12px;
+  }
+
+  .p-top-2 > div {
+    margin-right: 0 !important;
+  }
+}
+
+/* ==================================
+   MOBILE RESPONSIVENESS
+================================== */
+
+@media (max-width: 767.98px) {
+  .container,
+  .container-fluid {
+    --bs-gutter-x: 1.5rem;
+  }
+
+  .navbar {
+    padding: 12px 0;
+  }
+
+  .navbar .container {
+    padding-inline: 0;
+  }
+
+  .navbar-collapse {
+    padding: 15px 0;
+  }
+
+  .navbar-nav {
+    gap: 0;
+  }
+
+  .navbar .nav-link {
+    padding: 10px 0;
+  }
+
+  .navbar-text.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .getStart {
+    width: 115px;
+    height: 115px;
+    margin: 20px auto;
+  }
+
+  .sectoion-1 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 18px;
+  }
+
+  .sectoion-1 .card-body {
+    padding: 20px;
+  }
+
+  .section-2 {
+    padding: 55px 0 !important;
+  }
+
+  .section-2 .col-md-6 {
+    display: block !important;
+    width: 100%;
+  }
+
+  .section-2 .col-md-6:first-child {
+    display: flex !important;
+    gap: 12px;
+  }
+
+  .section-2 .card-1,
+  .section-2 .card-2 {
+    flex: 1 1 50%;
+    width: 50%;
+    margin: 0 !important;
+  }
+
+  .section-2 .card-body {
+    padding: 12px;
+  }
+
+  .section-2 .card-body img {
+    width: 100%;
+    max-height: 120px;
+  }
+
+  .section-2 .members {
+    margin-top: 35px !important;
+  }
+
+  .section-2 .members p {
+    font-size: 16px !important;
+  }
+
+  .section-4 .category-list,
+  .section-4\.1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-boxed .row {
+    row-gap: 16px;
+  }
+
+  .team-boxed .Aron-fince img {
+    height: 150px;
+  }
+
+  .section-7 {
+    width: 100%;
+  }
+
+  #arrow {
+    justify-content: flex-start;
+    padding-bottom: 25px;
+  }
+
+  .p-top-2 > div {
+    width: 100%;
+  }
+
+  .p-top-2 {
+    padding-top: 50px;
+  }
+}
+
+/* ==================================
+   SMALL MOBILE
+================================== */
+
+@media (max-width: 480px) {
+  .getStart {
+    width: 100px;
+    height: 100px;
+    font-size: 13px;
+  }
+
+  .section-2 .col-md-6:first-child {
+    flex-direction: column;
+  }
+
+  .section-2 .card-1,
+  .section-2 .card-2 {
+    width: 100%;
+  }
+
+  .section-2 .card-body {
+    padding: 16px;
+  }
+
+  .section-2 .card-body img {
+    width: 35%;
+    max-height: 100px;
+  }
+
+  .section-4 .category-list,
+  .section-4\.1 {
+    grid-template-columns: 1fr;
+  }
+
+  .section-4 .card img {
+    height: 200px;
+  }
+
+  .team-boxed .Aron-fince img {
+    height: 220px;
+  }
+
+  .section-7 .rounded-circle {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  #bac-memb h1 {
+    font-size: 27px;
+  }
+}
+
+.section-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.section-category-grid .card {
+  margin: 0;
+}
+
+.section-category-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+@media (max-width: 991.98px) {
+  .section-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .section-category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
