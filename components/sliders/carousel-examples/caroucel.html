@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Slider</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #eee;
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+    }
+
+    /* slider */
+    .slider {
+      height: 100vh;
+      margin-top: -50px;
+      /* width: 100vw; */
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider .mainslides .block {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+
+    .slider .mainslides .block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider .mainslides .block .content {
+      position: absolute;
+      top: 53%;
+      width: 1140px;
+      max-width: 80%;
+      left: 45%;
+      transform: translateX(-50%);
+      padding-right: 30%;
+      box-sizing: border-box;
+      color: #fff;
+      text-shadow: 0 5px 10px #0004;
+    }
+
+    .description {
+      font-size: 16px !important;
+      margin-top: 18px;
+    }
+
+    .slider .mainslides .block .title,
+    .slider .mainslides .block .topic {
+      font-size: 5em;
+      font-weight: bold;
+      line-height: 1.3em;
+    }
+
+    /* cards (thumbnails) */
+    .cards {
+      position: absolute;
+      bottom: 50px;
+      left: 44%;
+      width: max-content;
+      z-index: 100;
+      display: flex;
+      gap: 20px;
+    }
+
+    .cards .block {
+      width: 200px;
+      height: 293px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cards .block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 2px solid white;
+      display: block;
+    }
+
+    .cards .block .content {
+      color: #fff;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      text-align: center;
+    }
+
+    .cards .block .content .title {
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    .cards .buttons button {
+      margin-top: 4%;
+      background-color: #fff;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cards .buttons button:hover {
+      color: #fff;
+      background-color: #333;
+    }
+
+    /* nav buttons */
+    .nav {
+      position: absolute;
+      top: 80%;
+      right: 72%;
+      z-index: 100;
+      width: 300px;
+      max-width: 30%;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: none;
+      color: #000;
+      font-size: 20px;
+      font-family: monospace;
+      font-weight: bold;
+      transition: 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    /* animations */
+    .slider .mainslides .block:nth-child(1) {
+      z-index: 1;
+    }
+
+    .slider .mainslides .block:nth-child(1) .content * {
+      transform: translateY(50px);
+      filter: blur(20px);
+      opacity: 0;
+      animation: showContent 0.5s 1s linear 1 forwards;
+    }
+
+    @keyframes showContent {
+      to {
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+
+    .slider.next .mainslides .block:nth-child(1) img {
+      width: 200px;
+      height: 293px;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      border-radius: 30px;
+      animation: showImage 0.5s linear 1 forwards;
+      border: 2px solid white;
+    }
+
+    @keyframes showImage {
+      to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+    }
+
+    @media screen and (max-width: 678px) {
+      .slider .mainslides .block .content {
+        padding-right: 0;
+      }
+      .slider .mainslides .block .content .title {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- slider -->
+  <div class="slider">
+    <!-- mainslides -->
+    <div class="mainslides">
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/sweating-it-out-a-view-of-a-naked-man-s-back-in-a-steamy-sauna-ai-generated-free-photo-scaled.jpg">
+        <div class="content">
+          <div class="title">Majestic Tiger</div>
+          <div class="description">The king of the jungle, known for its strength, power, and beauty. Tigers are one of the most fearsome predators on Earth.</div>
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/swimming-pool-outdoor_4883687-scaled.jpg">
+        <div class="content">
+          <div class="title">Wise Owl</div>
+          <div class="description">Symbolizing wisdom and mystery, owls are nocturnal creatures with exceptional vision even in dark and silent flight.</div>
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/WhatsApp-Image-2025-07-17-at-6.40.45-PM.jpeg">
+        <div class="content">
+          <div class="title">Shy Chameleon</div>
+          <div class="description">Famous for their color-changing ability, chameleons adapt to their surroundings with unique camouflage techniques.</div>
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/WhatsApp-Image-2025-07-17-at-6.40.45-PM.jpeg">
+        <div class="content">
+          <div class="title">Wild Bear</div>
+          <div class="description">The titan of the wild, known for its strength, power, and dominance. Bears are among the most formidable predators on Earth.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- thumbnails -->
+    <div class="cards">
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/sweating-it-out-a-view-of-a-naked-man-s-back-in-a-steamy-sauna-ai-generated-free-photo-scaled.jpg">
+        <div class="content">
+          <div class="title">Tiger</div>
+          <div class="buttons"><button>SEE MORE</button></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/swimming-pool-outdoor_4883687-scaled.jpg">
+        <div class="content">
+          <div class="title">Owl</div>
+          <div class="buttons"><button>SEE MORE</button></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/WhatsApp-Image-2025-07-17-at-6.40.45-PM.jpeg">
+        <div class="content">
+          <div class="title">Chameleon</div>
+          <div class="buttons"><button>SEE MORE</button></div>
+        </div>
+
+      </div>
+      <div class="block">
+        <img src="http://telco.com.bd/wp-content/uploads/2025/08/WhatsApp-Image-2025-07-17-at-6.40.45-PM.jpeg">
+        <div class="content">
+          <div class="title">Bear</div>
+          <div class="buttons"><button>SEE MORE</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- nav -->
+    <div class="nav">
+      <button id="prev"><</button>
+      <button id="next">></button>
+    </div>
+  </div>
+
+  <script>
+    const nextDom = document.getElementById('next');
+    const prevDom = document.getElementById('prev');
+    const sliderDom = document.querySelector('.slider');
+    const SliderDom = sliderDom.querySelector('.mainslides');
+    const thumbnailBorderDom = document.querySelector('.slider .cards');
+    let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.block');
+
+    thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+
+    let timeRunning = 3000;
+    let timeAutoNext = 7000;
+    let runTimeOut, runNextAuto;
+
+    nextDom.onclick = function () {
+      showSlider('next');
+    };
+
+    prevDom.onclick = function () {
+      showSlider('prev');
+    };
+
+    function showSlider(type) {
+      let SliderItemsDom = SliderDom.querySelectorAll('.block');
+      let thumbnailItemsDom = document.querySelectorAll('.slider .cards .block');
+
+      if (type === 'next') {
+        SliderDom.appendChild(SliderItemsDom[0]);
+        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+        sliderDom.classList.add('next');
+      } else {
+        SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+        thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+        sliderDom.classList.add('prev');
+      }
+
+      clearTimeout(runTimeOut);
+      runTimeOut = setTimeout(() => {
+        sliderDom.classList.remove('next');
+        sliderDom.classList.remove('prev');
+      }, timeRunning);
+
+      clearTimeout(runNextAuto);
+      runNextAuto = setTimeout(() => {
+        nextDom.click(); // fixed bug
+      }, timeAutoNext);
+    }
+  </script>
+</body>
+</html>

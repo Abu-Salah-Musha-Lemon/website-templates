@@ -1,118 +1,412 @@
 [
   {
-    "ProjectName": "Education",
-    "Technology": "HTML, CSS",
-    "imgLink": "./educational/index.html"
+    "id": "cse-website",
+    "title": "CSE Website",
+    "description": "A multi-section computer science department website layout.",
+    "category": "Websites",
+    "group": "Education",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap"
+    ],
+    "preview": "websites/education/cse-website/index.html",
+    "folder": "websites/education/cse-website",
+    "kind": "static"
   },
   {
-    "ProjectName": "Card",
-    "Technology": "HTML, CSS",
-    "imgLink": "./card/index.html"
+    "id": "cse-department",
+    "title": "CSE Department Website",
+    "description": "A multi-page department website with sections for programs, faculty, research, students and news.",
+    "category": "Websites",
+    "group": "Education",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "preview": "websites/education/cse-department/index.html",
+    "folder": "websites/education/cse-department",
+    "kind": "static"
   },
   {
-    "ProjectName": "Card 2",
-    "Technology": "HTML",
-    "imgLink": "./card/index2.html"
+    "id": "education-website",
+    "title": "Education Website",
+    "description": "An education-focused website template with learning and course sections.",
+    "category": "Websites",
+    "group": "Education",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "websites/education/education-website/index.html",
+    "folder": "websites/education/education-website",
+    "kind": "static"
   },
   {
-    "ProjectName": "Drag and Drop",
-    "Technology": "HTML, CSS",
-    "imgLink": "./dragAndDrop/index.html"
+    "id": "one-page-design",
+    "title": "One-Page Website Design",
+    "description": "A single-page surfboard and surf-culture website design.",
+    "category": "Websites",
+    "group": "Landing Pages",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "websites/landing-pages/one-page-design/index.html",
+    "folder": "websites/landing-pages/one-page-design",
+    "kind": "static"
   },
   {
-    "ProjectName": "POS",
-    "Technology": "HTML, CSS",
-    "imgLink": "./pos/index.html"
+    "id": "bootstrap-web-design",
+    "title": "Bootstrap Website Design",
+    "description": "A Bootstrap-based website template with two homepage variations and image assets.",
+    "category": "Websites",
+    "group": "Landing Pages",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap"
+    ],
+    "preview": "websites/landing-pages/bootstrap-web-design/index.html",
+    "folder": "websites/landing-pages/bootstrap-web-design",
+    "kind": "static"
   },
   {
-    "ProjectName": "Slider",
-    "Technology": "HTML, CSS",
-    "imgLink": "./slider/index.html"
+    "id": "food-app-website",
+    "title": "Food App Website",
+    "description": "A food-themed website layout with navigation and menu sections.",
+    "category": "Websites",
+    "group": "Business",
+    "technologies": [
+      "HTML",
+      "CSS"
+    ],
+    "preview": "websites/business/food-app/index.html",
+    "folder": "websites/business/food-app",
+    "kind": "static"
   },
   {
-    "ProjectName": "AJAX",
-    "Technology": "HTML, CSS, PHP, MySQL, AJAX",
-    "imgLink": "./ajax/index.html"
+    "id": "telco-website",
+    "title": "Telco Business Website",
+    "description": "A multi-page business website template for telecom and engineering services.",
+    "category": "Websites",
+    "group": "Business",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "preview": "websites/business/telco-website/index.html",
+    "folder": "websites/business/telco-website",
+    "kind": "static"
   },
   {
-    "ProjectName": "Web",
-    "Technology": "HTML, CSS",
-    "imgLink": "./CSE/index.html"
+    "id": "shopping-cart",
+    "title": "Shopping Cart",
+    "description": "A product listing and shopping-cart interface backed by a JSON product file.",
+    "category": "Applications",
+    "group": "E-commerce",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript",
+      "JSON"
+    ],
+    "preview": "applications/e-commerce/shopping-cart/index.html",
+    "folder": "applications/e-commerce/shopping-cart",
+    "kind": "static"
   },
   {
-    "ProjectName": "CRUD Demo",
-    "Technology": "HTML, CSS, Bootstrap 5, jQuery, Modal",
-    "imgLink": "./bootstrap/index.html"
+    "id": "pos-system",
+    "title": "POS System",
+    "description": "A point-of-sale interface with separate login, signup and admin pages.",
+    "category": "Applications",
+    "group": "Point of Sale",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "preview": "applications/point-of-sale/pos-system/index.html",
+    "folder": "applications/point-of-sale/pos-system",
+    "kind": "static"
   },
   {
-    "ProjectName": "Shopping Cart Demo",
-    "Technology": "HTML, Bootstrap 5, JS",
-    "imgLink": "./ShoppingCard/index.html"
+    "id": "pos-dashboard",
+    "title": "POS Dashboard",
+    "description": "A dashboard-style interface with sidebar navigation and operational sections.",
+    "category": "Applications",
+    "group": "Point of Sale",
+    "technologies": [
+      "HTML",
+      "CSS"
+    ],
+    "preview": "applications/point-of-sale/pos-dashboard/index.html",
+    "folder": "applications/point-of-sale/pos-dashboard",
+    "kind": "static"
   },
   {
-    "ProjectName": "Custom Print DataTable",
-    "Technology": "HTML, Bootstrap 5, JS",
-    "imgLink": "./dataTable/index.html"
+    "id": "admin-auth-pages",
+    "title": "Admin Login & Registration",
+    "description": "Standalone login and registration page designs.",
+    "category": "Applications",
+    "group": "Authentication",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap"
+    ],
+    "preview": "applications/authentication/admin-pages/login.html",
+    "folder": "applications/authentication/admin-pages",
+    "kind": "static"
   },
   {
-    "ProjectName": "Responsive Code",
-    "Technology": "HTML",
-    "imgLink": "./responsive/index.html"
+    "id": "ajax-php-crud",
+    "title": "AJAX Student CRUD",
+    "description": "A PHP and MySQL student-management demo using AJAX. It needs a local PHP and MySQL server to run.",
+    "category": "Applications",
+    "group": "Backend",
+    "technologies": [
+      "PHP",
+      "MySQL",
+      "AJAX",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "preview": null,
+    "folder": "applications/backend/ajax-php-crud",
+    "kind": "server",
+    "requirement": "Requires PHP and MySQL (for example, XAMPP). GitHub Pages cannot execute PHP."
   },
   {
-    "ProjectName": "Tablet View POS",
-    "Technology": "HTML, CSS",
-    "imgLink": "./pos2/index.html"
+    "id": "bootstrap-crud",
+    "title": "Bootstrap CRUD Demo",
+    "description": "A CRUD interface demo built around Bootstrap and browser-side scripting.",
+    "category": "Applications",
+    "group": "CRUD",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript",
+      "jQuery"
+    ],
+    "preview": "applications/crud/bootstrap-crud/index.html",
+    "folder": "applications/crud/bootstrap-crud",
+    "kind": "static"
   },
   {
-    "ProjectName": "PDF Preview",
-    "Technology": "HTML, Bootstrap",
-    "imgLink": "./card/pdf.htm"
+    "id": "card-example-1",
+    "title": "Card Design 01",
+    "description": "A profile-style card component design.",
+    "category": "Components",
+    "group": "Cards",
+    "technologies": [
+      "HTML",
+      "CSS"
+    ],
+    "preview": "components/cards/card-examples/index.html",
+    "folder": "components/cards/card-examples",
+    "kind": "static"
   },
   {
-    "ProjectName": "CSE Department",
-    "Technology": "HTML, Bootstrap",
-    "imgLink": "./CSEdef/index.html"
+    "id": "card-example-2",
+    "title": "Card Design 02",
+    "description": "An alternative card layout from the same component collection.",
+    "category": "Components",
+    "group": "Cards",
+    "technologies": [
+      "HTML",
+      "CSS"
+    ],
+    "preview": "components/cards/card-examples/index2.html",
+    "folder": "components/cards/card-examples",
+    "kind": "static"
   },
   {
-    "ProjectName": "Telco",
-    "Technology": "HTML, Bootstrap",
-    "imgLink": "./telco/index.html"
+    "id": "pdf-viewer",
+    "title": "PDF Viewer",
+    "description": "A custom PDF preview page.",
+    "category": "Components",
+    "group": "Document Preview",
+    "technologies": [
+      "HTML",
+      "Bootstrap"
+    ],
+    "preview": "components/cards/card-examples/pdf.htm",
+    "folder": "components/cards/card-examples",
+    "kind": "static"
   },
   {
-    "ProjectName": "Responsive Media Slider with Grid Areas",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./slide/index.html"
-  },
-    {
-    "ProjectName": "Responsive Photo card",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./photocard/index.html"
-  },
-    {
-    "ProjectName": "Responsive Photo card",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./photocard/index2.html"
-  },
-  {
-    "ProjectName": "Responsive Photo card 3",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./photocard/index3.html"
-  },
-    {
-    "ProjectName": "Caroucel",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./slide/caroucel.html"
+    "id": "photo-card-1",
+    "title": "Photo Card 01",
+    "description": "A responsive photo-card design.",
+    "category": "Components",
+    "group": "Photo Cards",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "components/cards/photo-cards/index.html",
+    "folder": "components/cards/photo-cards",
+    "kind": "static"
   },
   {
-    "ProjectName": "OnePageDesign",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./OnePageDesign/index.html"
+    "id": "photo-card-2",
+    "title": "Photo Card Creator 02",
+    "description": "A second photo-card variation with creator-style interactions.",
+    "category": "Components",
+    "group": "Photo Cards",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "components/cards/photo-cards/index2.html",
+    "folder": "components/cards/photo-cards",
+    "kind": "static"
   },
-    {
-    "ProjectName": "WebDesignUsedBootstrap",
-    "Technology": "HTML, CSS, JS",
-    "imgLink": "./WebDesignUsedBootstrap/index.html"
+  {
+    "id": "photo-card-3",
+    "title": "Photo Card 03",
+    "description": "A third photo-card variation.",
+    "category": "Components",
+    "group": "Photo Cards",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "components/cards/photo-cards/index3.html",
+    "folder": "components/cards/photo-cards",
+    "kind": "static"
+  },
+  {
+    "id": "drag-and-drop",
+    "title": "Drag and Drop Demo",
+    "description": "A small browser demo for dragging and dropping elements.",
+    "category": "Components",
+    "group": "Interactions",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "components/interactions/drag-and-drop/index.html",
+    "folder": "components/interactions/drag-and-drop",
+    "kind": "static"
+  },
+  {
+    "id": "image-preview",
+    "title": "Image Preview",
+    "description": "A file-input demo for previewing a selected image.",
+    "category": "Components",
+    "group": "Interactions",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "preview": "components/interactions/image-preview/index.html",
+    "folder": "components/interactions/image-preview",
+    "kind": "static"
+  },
+  {
+    "id": "media-slider",
+    "title": "Responsive Media Slider",
+    "description": "A responsive media-slider demo using CSS grid areas, with additional slider variations in the same folder.",
+    "category": "Components",
+    "group": "Sliders",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "components/sliders/media-slider/index.html",
+    "folder": "components/sliders/media-slider",
+    "kind": "static"
+  },
+  {
+    "id": "carousel-examples",
+    "title": "Carousel & Slider Examples",
+    "description": "A collection of animated card, carousel and slider examples, including the animal carousel.",
+    "category": "Components",
+    "group": "Sliders",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "components/sliders/carousel-examples/caroucel.html",
+    "folder": "components/sliders/carousel-examples",
+    "kind": "static"
+  },
+  {
+    "id": "data-table",
+    "title": "DataTable Demo",
+    "description": "A table interface with DataTables and print-related functionality.",
+    "category": "Demos",
+    "group": "Data",
+    "technologies": [
+      "HTML",
+      "Bootstrap",
+      "jQuery",
+      "DataTables"
+    ],
+    "preview": "demos/data-table/index.html",
+    "folder": "demos/data-table",
+    "kind": "static"
+  },
+  {
+    "id": "responsive-layout",
+    "title": "Responsive Layout Demo",
+    "description": "A compact example demonstrating responsive container sizing and media queries.",
+    "category": "Demos",
+    "group": "Layout",
+    "technologies": [
+      "HTML",
+      "CSS"
+    ],
+    "preview": "demos/responsive-layout/index.html",
+    "folder": "demos/responsive-layout",
+    "kind": "static"
+  },
+  {
+    "id": "navigation-bar",
+    "title": "Navigation Bar Snippet",
+    "description": "A standalone navigation-bar and dropdown-menu example.",
+    "category": "Demos",
+    "group": "Snippets",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "preview": "demos/snippets/navigation-bar.html",
+    "folder": "demos/snippets",
+    "kind": "static"
+  },
+  {
+    "id": "text-overflow",
+    "title": "CSS Text Overflow Demo",
+    "description": "A standalone example showing different CSS overflow behaviors.",
+    "category": "Demos",
+    "group": "Snippets",
+    "technologies": [
+      "HTML",
+      "CSS"
+    ],
+    "preview": "demos/snippets/text-overflow.html",
+    "folder": "demos/snippets",
+    "kind": "static"
   }
-  
 ]
