@@ -1,52 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Picture Upload</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<style>
-  #fileupload{
-    width: 150px;
-    height: 150px;
-    background-color: red;
-  }
-</style>
-    <title>Image Preview</title>
-  </head>
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <div class="container-fluid">
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .upload-card {
+            width: 100%;
+            max-width: 430px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.07);
+            text-align: center;
+        }
 
-      <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="..." id="upload-img">
-    
-      </div>
-      <div class="custom-file">
-          <label for="">Upload Profile Picture</label>
-          <input type="file" name="file" id="fileupload">
-         </div>
+        .profile-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #eef1ff;
+            background: #f1f3f9;
+        }
+
+        .upload-area {
+            border: 2px dashed #c8cef0;
+            background: #f8f9ff;
+            border-radius: 14px;
+            padding: 25px 15px;
+            margin-top: 25px;
+            transition: .3s;
+        }
+
+        .upload-area:hover {
+            border-color: #635bdb;
+            background: #f0efff;
+        }
+
+        .upload-icon {
+            font-size: 35px;
+            color: #635bdb;
+        }
+
+        .upload-btn {
+            background: #635bdb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 11px 25px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .upload-btn:hover {
+            background: #4d45bd;
+            color: white;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .subtitle {
+            color: #8a91a5;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="upload-card">
+
+        <h3 class="fw-bold mb-2">Profile Picture</h3>
+        <p class="subtitle mb-4">
+            Update your profile photo
+        </p>
+
+        <div class="mb-3">
+            <img
+                src="https://placehold.co/300x300/e9eaff/635bdb?text=Profile"
+                id="upload-img"
+                class="profile-preview"
+                alt="Profile Preview"
+            >
+        </div>
+
+        <h5 class="fw-semibold mt-3">Upload your photo</h5>
+
+        <p class="subtitle">
+            Choose a photo to personalize your profile.
+        </p>
+
+        <div class="upload-area">
+
+            <div class="upload-icon">☁</div>
+
+            <p class="fw-semibold mt-2 mb-1">
+                Click to upload your image
+            </p>
+
+            <p class="subtitle mb-3">
+                JPG, PNG or WEBP (Max 5MB)
+            </p>
+
+            <label for="fileupload" class="upload-btn">
+                Choose Image
+            </label>
+
+            <input
+                type="file"
+                id="fileupload"
+                class="file-input"
+                accept="image/png,image/jpeg,image/webp"
+            >
+
+        </div>
+
+        <p class="subtitle mt-4 mb-0">
+            Your profile picture will be displayed on your account.
+        </p>
+
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
- 
-  <script>
+            $('#fileupload').change(function (e) {
 
-    $(function(){
-      $('#fileupload').change(function(e){
-        let x = URL.createObjectURL(e.target.file[0])
-        $('#upload-image').attr('src',x)
-        console.log(e);
-      })
-    })
+                let file = e.target.files[0];
 
-  </script>
+                if (!file) return;
+
+                if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+                    alert('Please select a JPG, PNG or WEBP image.');
+                    this.value = '';
+                    return;
+                }
+
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Image size must be less than 5MB.');
+                    this.value = '';
+                    return;
+                }
+
+                let imageURL = URL.createObjectURL(file);
+
+                $('#upload-img').attr('src', imageURL);
+
+            });
+
+        });
+    </script>
 
 </body>
 </html>
